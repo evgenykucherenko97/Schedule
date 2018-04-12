@@ -32,25 +32,34 @@ namespace Schedule.Models.LoadModels
         public int GroupCount { get; set; }
         //public int StudentCount { get; set; }
 
-        public int? LectionCountAWeekPerFirstHalf { get; set; }
-        public int? LectionCountPerFirstHalf { get; set; }
-        public int? LabCountAWeekPerFirstHalf { get; set; }
-        public int? LabCountPerFirstHalf { get; set; }
-        public int? PracticeCountAWeekPerFirstHalf { get; set; }
-        public int? PracticeCountPerFirstHalf { get; set; }
 
-        public int? LectionCountAWeekPerSecondHalf { get; set; }
-        public int? LectionCountPerSecondHalf { get; set; }
-        public int? LabCountAWeekPerSecondHalf { get; set; }
-        public int? LabCountPerSecondHalf { get; set; }
-        public int? PracticeCountAWeekPerSecondHalf { get; set; }
-        public int? PracticeCountPerSecondHalf { get; set; }
+
+        public int? CountAWeekPerFirstHalf { get; set; }
+        public int? CountAWeekPerSecondHalf { get; set; }
+
+        //public int? LectionCountAWeekPerFirstHalf { get; set; }
+        //public int? LectionCountPerFirstHalf { get; set; }
+        //public int? LabCountAWeekPerFirstHalf { get; set; }
+        //public int? LabCountPerFirstHalf { get; set; }
+        //public int? PracticeCountAWeekPerFirstHalf { get; set; }
+        //public int? PracticeCountPerFirstHalf { get; set; }
+
+        //public int? LectionCountAWeekPerSecondHalf { get; set; }
+        //public int? LectionCountPerSecondHalf { get; set; }
+        //public int? LabCountAWeekPerSecondHalf { get; set; }
+        //public int? LabCountPerSecondHalf { get; set; }
+        //public int? PracticeCountAWeekPerSecondHalf { get; set; }
+        //public int? PracticeCountPerSecondHalf { get; set; }
 
         public int? RGR { get; set; }
         public int? RR { get; set; }
         public int? RK { get; set; }
-        public int? CourserWork { get; set; }
-        public int? CourseProject { get; set; }
+
+
+        //public int? CourserWork { get; set; }
+        //public int? CourseProject { get; set; }
+        public CourseWork CourseWork { get; set; }
+
 
         //public bool? FormControlZach { get; set; }
         //public bool? FormControlDiv { get; set; }
