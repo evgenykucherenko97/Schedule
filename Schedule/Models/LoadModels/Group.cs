@@ -14,6 +14,8 @@ namespace Schedule.Models.LoadModels
         public int Grade { get; set; }
         public int? StudentCount { get; set; }
 
-        public bool IsFRL { get; set; }
+
+        public GroupKind GroupKind { get; set; }
+        //public bool IsFRL { get; set; }
     }
 }

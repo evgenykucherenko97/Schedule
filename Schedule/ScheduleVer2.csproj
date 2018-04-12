@@ -220,6 +220,7 @@
     <Compile Include="Models\LoadModels\CourseWork.cs" />
     <Compile Include="Models\LoadModels\FormOfControl.cs" />
     <Compile Include="Models\LoadModels\Group.cs" />
+    <Compile Include="Models\LoadModels\GroupKind.cs" />
     <Compile Include="Models\LoadModels\KindOfClasses.cs" />
     <Compile Include="Models\LoadModels\RegularLoad.cs" />
     <Compile Include="Models\LoadModels\Subject.cs" />
