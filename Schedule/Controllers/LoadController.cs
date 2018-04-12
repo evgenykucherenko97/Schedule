@@ -34,7 +34,7 @@ namespace Schedule.Controllers
             }
             // Путь к файлу
             string file_path = Server.MapPath("~/Files/" + filemodel.Path);
-            List<TableDataDTO> list = Import_COM.Import_Excel(file_path);
+            List<TableDataDTODay> list = Import_COM.Import_Excel(file_path);
             //// Тип файла - content-type
             //string file_type = filemodel.Path.Substring(filemodel.Path.IndexOf('.'));
             //// Имя файла - необязательно

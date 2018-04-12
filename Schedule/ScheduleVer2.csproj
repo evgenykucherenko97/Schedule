@@ -187,6 +187,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Classes\LoadDatabaseConverter.cs" />
     <Compile Include="Classes\TableDataDTO.cs" />
+    <Compile Include="Classes\TableDataDTOZaoch.cs" />
     <Compile Include="COM\Import_COM.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />

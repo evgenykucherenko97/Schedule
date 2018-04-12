@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Schedule.Classes
 {
-    public class TableDataDTO
+    public class TableDataDTODay
     {
         public int id { get; set; }
 
