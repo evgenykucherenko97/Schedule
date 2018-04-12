@@ -224,6 +224,7 @@
     <Compile Include="Models\LoadModels\KindOfClasses.cs" />
     <Compile Include="Models\LoadModels\RegularLoad.cs" />
     <Compile Include="Models\LoadModels\Subject.cs" />
+    <Compile Include="Models\LoadModels\ZaochLoad.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
