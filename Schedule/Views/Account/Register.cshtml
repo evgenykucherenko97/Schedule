@@ -1,0 +1,63 @@
+﻿@model Schedule.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h4>Регистрация пользователя</h4>
+        <hr />
+        @Html.ValidationSummary(false)
+
+        <div>
+            @Html.LabelFor(model => model.Email)
+            <div>
+                @Html.EditorFor(model => model.Email)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <div>
+                @Html.EditorFor(model => model.Name)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Password)
+            <div>
+                @Html.EditorFor(model => model.Password)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.ConfirmPassword)
+            <div>
+                @Html.EditorFor(model => model.ConfirmPassword)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Address)
+            <div>
+                @Html.EditorFor(model => model.Address)
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <input type="submit" value="Зарегистрировать" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
