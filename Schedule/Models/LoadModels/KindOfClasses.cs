@@ -7,8 +7,8 @@ namespace Schedule.Models.LoadModels
 {
     public enum KindOfClasses
     {
-        Lections,
-        Prsctices,
-        Labs
+        Lections = 1,
+        Prsctices = 2,
+        Labs = 3
     }
 }

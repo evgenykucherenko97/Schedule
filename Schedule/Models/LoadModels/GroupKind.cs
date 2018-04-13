@@ -7,13 +7,13 @@ namespace Schedule.Models.LoadModels
 {
     public enum GroupKind
     {
-        FRL,
-        Regular
+        FRL = 2,
+        Regular = 1
     }
 
     public enum GroupClassesKind
     {
-        Day,
-        ZO
+        Day = 1,
+        ZO = 2
     }
 }

@@ -7,8 +7,8 @@ namespace Schedule.Models.LoadModels
 {
     public enum FormOfControl
     {
-        FormControlZach,
-        FormControlDiv,
-        FormControlExam
+        FormControlZach = 1,
+        FormControlDiv = 2,
+        FormControlExam = 3
     }
 }

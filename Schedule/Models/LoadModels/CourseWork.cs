@@ -7,8 +7,8 @@ namespace Schedule.Models.LoadModels
 {
     public enum CourseWork
     {
-        CourseWork,
-        CourseProject,
-        None
+        CourseWork = 1,
+        CourseProject = 2,
+        None = 3
     }
 }
