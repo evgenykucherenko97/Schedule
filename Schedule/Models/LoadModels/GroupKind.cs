@@ -8,7 +8,12 @@ namespace Schedule.Models.LoadModels
     public enum GroupKind
     {
         FRL,
-        Regular,
-        Zaoch
+        Regular
+    }
+
+    public enum GroupClassesKind
+    {
+        Day,
+        ZO
     }
 }

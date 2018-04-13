@@ -16,6 +16,7 @@ namespace Schedule.Models.LoadModels
 
 
         public GroupKind GroupKind { get; set; }
+        public GroupClassesKind GroupClassesKind { get; set; }
         //public bool IsFRL { get; set; }
     }
 }
