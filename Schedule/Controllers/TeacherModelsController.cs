@@ -8,6 +8,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Schedule.Models;
+using System.Collections;
+using AutoMapper;
+using Schedule.Models.DTOs;
 
 namespace Schedule.Controllers
 {
@@ -18,6 +21,16 @@ namespace Schedule.Controllers
         // GET: TeacherModels
         public async Task<ActionResult> Index()
         {
+            //doesnt work properly, we dont save fields Position and Degree (just IDs) 
+            //need to create new map for displaying 
+            var teachers = await db.TeacherModels.ToListAsync();
+            ArrayList teacherDTOs = new ArrayList();
+            foreach(TeacherModel teacher in teachers)
+            {
+                teacherDTOs.Add(
+                     Mapper.Map<TeacherDTO>(teacher)
+                );
+            }
             return View(await db.TeacherModels.ToListAsync());
         }
 
