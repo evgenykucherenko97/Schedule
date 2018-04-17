@@ -24,7 +24,8 @@ namespace Schedule.Controllers
         [HttpGet]
         public async Task<ActionResult> CreateLoad()
         {
-            ViewBag.Files = await db.Files.ToListAsync();
+            SelectList files = new SelectList(db.Files, "Path", "Path");
+            ViewBag.Files = files;
             return View();
         }
 
