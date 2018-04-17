@@ -21,6 +21,13 @@ namespace Schedule.Controllers
             return View(await db.Files.ToListAsync());
         }
 
+        [HttpGet]
+        public async Task<ActionResult> CreateLoad()
+        {
+            ViewBag.Files = await db.Files.ToListAsync();
+            return View();
+        }
+
         public async Task<ActionResult> Parse(Guid? Id)
         {
             if (Id == null)

@@ -8,6 +8,7 @@ namespace Schedule.Models.LoadModels
     public class RegularLoad
     {
         public Guid Id { get; set; }
+        public string LoadName { get; set; }
         //subject 
         public Subject Subject { get; set; }
         //groups

@@ -228,6 +228,7 @@
     <Compile Include="Models\DTOs\TeacherDTO.cs" />
     <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\HelpingModels\LoadHelperModel.cs" />
     <Compile Include="Models\LoadModels\CourseWork.cs" />
     <Compile Include="Models\LoadModels\FormOfControl.cs" />
     <Compile Include="Models\LoadModels\Group.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\Groups\Details.cshtml" />
     <Content Include="Views\Groups\Edit.cshtml" />
     <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Load\CreateLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
