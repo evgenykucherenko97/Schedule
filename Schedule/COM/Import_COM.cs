@@ -1,4 +1,5 @@
 ﻿using Schedule.Classes;
+using Schedule.Models.LoadModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -209,7 +210,7 @@ namespace Schedule.COM
             {
                 Excel.Worksheet xlSheet = (Excel.Worksheet)wb.Worksheets.get_Item(1);
                 Excel.Range excelcells;
-                int count = 11;
+                int count = 8;
                 for (; ; )
                 {
                     excelcells = xlSheet.get_Range("A" + count.ToString(), Type.Missing);
@@ -309,6 +310,89 @@ namespace Schedule.COM
                     temp.Gap = Convert.ToInt32(excelcells.Value);
                     excelcells = xlSheet.get_Range("AI" + count.ToString(), Type.Missing);
                     temp.Npr = Convert.ToString(excelcells.Value);
+
+                    data.Add(temp);
+                    count++;
+                }
+
+            }
+            catch { }
+
+        }
+
+
+
+        public static List<Group> Import_Excel_Groups(string pathfile)
+        {
+            List<Group> list = new List<Group>();
+
+
+            Microsoft.Office.Interop.Excel.Application xlApp = new Excel.Application();
+            xlApp.Visible = false;
+
+            Microsoft.Office.Interop.Excel.Workbooks workbooks = xlApp.Workbooks;
+
+            Microsoft.Office.Interop.Excel.Workbook xlBook = workbooks.Open(pathfile,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing);
+
+            TableInEx(xlBook, list);
+
+            try
+            {
+                xlBook.Saved = true;
+                xlBook.Close();
+                xlApp.Quit();
+            }
+            finally
+            {
+                Release.ReleaseObject(workbooks);
+                Release.ReleaseObject(xlBook);
+                Release.ReleaseObject(xlApp);
+            }
+            return list;
+        }
+
+        static void TableInEx(Excel.Workbook wb, List<Group> data)
+        {
+            try
+            {
+                Excel.Worksheet xlSheet = (Excel.Worksheet)wb.Worksheets.get_Item(1);
+                Excel.Range excelcells;
+                int count = 2;
+                for (; ; )
+                {
+                    excelcells = xlSheet.get_Range("A" + count.ToString(), Type.Missing);
+                    String num_r = Convert.ToString(excelcells.Value);
+                    if (num_r == null)
+                    {
+                        break;
+                    }
+                    Group temp = new Group();
+
+                    temp.Id = Guid.NewGuid();
+
+                    excelcells = xlSheet.get_Range("A" + count.ToString(), Type.Missing);
+                    temp.Caf = Convert.ToString(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("C" + count.ToString(), Type.Missing);
+                    temp.Speciality = Convert.ToString(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("E" + count.ToString(), Type.Missing);
+                    temp.Grade = Convert.ToInt32(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("F" + count.ToString(), Type.Missing);
+                    temp.Name = Convert.ToString(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("G" + count.ToString(), Type.Missing);
+                    temp.StudentCount = Convert.ToInt32(excelcells.Value);
+
+                    //Faculty????
+                    temp.GroupKind = GroupKind.None;
+                    temp.GroupClassesKind = GroupClassesKind.None;
+                    temp.Faculty = temp.Caf[0].ToString();
 
                     data.Add(temp);
                     count++;
