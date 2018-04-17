@@ -1,0 +1,74 @@
+﻿@model Schedule.Models.LoadModels.Group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Faculty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Speciality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Speciality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupKind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupKind)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupClassesKind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupClassesKind)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -320,8 +320,6 @@ namespace Schedule.COM
 
         }
 
-
-
         public static List<Group> Import_Excel_Groups(string pathfile)
         {
             List<Group> list = new List<Group>();

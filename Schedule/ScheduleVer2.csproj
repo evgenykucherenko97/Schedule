@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DegreesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoadController.cs" />
     <Compile Include="Controllers\PositionModelsController.cs" />
@@ -217,6 +218,10 @@
     <Compile Include="Migrations\201804031135444_MigrateDB2.cs" />
     <Compile Include="Migrations\201804031135444_MigrateDB2.Designer.cs">
       <DependentUpon>201804031135444_MigrateDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804171235021_AddGroupMigration.cs" />
+    <Compile Include="Migrations\201804171235021_AddGroupMigration.Designer.cs">
+      <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -306,6 +311,11 @@
     <Content Include="Views\TeacherModels\Index.cshtml" />
     <Content Include="Views\File\Index.cshtml" />
     <Content Include="Views\Load\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
@@ -340,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804031135444_MigrateDB2.resx">
       <DependentUpon>201804031135444_MigrateDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804171235021_AddGroupMigration.resx">
+      <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Schedule.Models.LoadModels;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace Schedule.Models
         public DbSet<PositionModel> Positions { get; set; }
         public DbSet<TeacherModel> TeacherModels { get; set; }
         public DbSet<FileModel> Files { get; set; }
+        public DbSet<Group> Groups { get; set; }
     }
 }
