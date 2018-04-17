@@ -1,6 +1,7 @@
 ﻿using Schedule.Classes;
 using Schedule.COM;
 using Schedule.Models;
+using Schedule.Models.HelpingModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,6 +28,13 @@ namespace Schedule.Controllers
             SelectList files = new SelectList(db.Files, "Path", "Path");
             ViewBag.Files = files;
             return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateLoad(LoadHelperModel model)
+        {
+            
+            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> Parse(Guid? Id)
