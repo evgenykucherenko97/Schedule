@@ -33,7 +33,7 @@ namespace Schedule.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateLoad(LoadHelperModel model)
         {
-            var list = new object();
+            dynamic list;
             string file_path = Server.MapPath("~/Files/" + model.Filepath);
             if (model.LoadKind == LoadKind.Day)
             {
