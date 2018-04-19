@@ -204,6 +204,13 @@
     <Compile Include="Controllers\PositionModelsController.cs" />
     <Compile Include="Controllers\TeacherModelsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="EF\Interfaces\IRepository.cs" />
+    <Compile Include="EF\Repositories\DegreeRepository.cs" />
+    <Compile Include="EF\Repositories\FileRepository.cs" />
+    <Compile Include="EF\Repositories\GroupRepository.cs" />
+    <Compile Include="EF\Repositories\PositionRepository.cs" />
+    <Compile Include="EF\Repositories\TeacherRepository.cs" />
+    <Compile Include="EF\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
