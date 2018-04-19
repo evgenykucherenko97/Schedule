@@ -31,7 +31,7 @@ namespace Schedule.Models.LoadModels
         public int Term { get; set; }
         //public string Groups { get; set; }
         public int GroupCount { get; set; }
-        //public int StudentCount { get; set; }
+        public int StudentCount { get; set; }
 
 
 
