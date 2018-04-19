@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Schedule.COM;
@@ -86,13 +87,13 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Faculty,Caf,Speciality,Grade,StudentCount,GroupKind,GroupClassesKind")] Group group)
+        public async Task<ActionResult> Create(Group group)
         {
             if (ModelState.IsValid)
             {
                 group.Id = Guid.NewGuid();
                 db.Groups.Add(group);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 

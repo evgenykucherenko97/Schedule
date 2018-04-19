@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201804171235021_AddGroupMigration.Designer.cs">
       <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804191203456_MigrateDB3.cs" />
+    <Compile Include="Migrations\201804191203456_MigrateDB3.Designer.cs">
+      <DependentUpon>201804191203456_MigrateDB3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DTOs\TeacherDTO.cs" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804171235021_AddGroupMigration.resx">
       <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804191203456_MigrateDB3.resx">
+      <DependentUpon>201804191203456_MigrateDB3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
