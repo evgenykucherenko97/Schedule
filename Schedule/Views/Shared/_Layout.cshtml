@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             @if (HttpContext.Current.User.IsInRole("user"))
             {
@@ -25,8 +25,27 @@
                 <div class="navbar-collapse collapse">
 
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Admin panel", "Index", "Admin")</li>
-                        <li>@Html.ActionLink("Profile", "Index", "User")</li>                        
+                        <li>@Html.ActionLink("Личный кабинет", "Index", "User")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Данные приложения<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Основные модели</li>
+                                <li>@Html.ActionLink("Учебные группы", "Index", "Groups")</li>
+                                <li>@Html.ActionLink("Ученые степени", "Index", "Degrees")</li>
+                                <li>@Html.ActionLink("Должности", "Index", "PositionModels")</li>
+                                <li>@Html.ActionLink("Преподаватели", "Index", "TeacherModels")</li>
+                                <li>@Html.ActionLink("Файлы", "Index", "File")</li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Пользователи</li>
+                                <li><a href="#">Пользователи</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Распределение нагрузки</li>
+                                <li>@Html.ActionLink("Нагрузка", "Index", "Load")</li>
+                            </ul>
+                        </li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Log Out", "Logout", "Account")</li>
