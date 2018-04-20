@@ -112,13 +112,8 @@ namespace Schedule.Controllers
 
         public async Task<ActionResult> Edit()
         {
-            EditModel model = new EditModel();
             UserDTO user = await UserService.GetUser(User.Identity.Name);
-            model.Name = user.Name;
-            model.Address = user.Address;
-            model.Email = user.Email;
-            model.Password = null;
-            model.ConfirmPassword = null;
+            EditModel model = AutoMapper.Mapper.Map<EditModel>(user);
             return View(model);
         }
 

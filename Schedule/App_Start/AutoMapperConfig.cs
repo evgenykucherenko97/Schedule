@@ -21,6 +21,7 @@ namespace Schedule.App_Start
                 .ForMember
                     (dst => dst.Degree, src => src.MapFrom(e => e.Degree.Name));
                 cfg.CreateMap<UserDTO, UserDisplayModel>();
+                cfg.CreateMap<UserDTO, EditModel>();
                 });
         }
     }
