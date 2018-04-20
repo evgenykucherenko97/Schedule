@@ -13,36 +13,37 @@
         <div class="container">
             @if (HttpContext.Current.User.IsInRole("user"))
             {
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-                @Html.ActionLink("Schedule", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Admin panel", "Index", "Admin")</li>
-                    <li>@Html.ActionLink("Profile", "Index", "User")</li>
-                    <li>@Html.ActionLink("Log Out", "Logout", "Account")</li>
-                </ul>
-            </div>
-            }else
+                    @Html.ActionLink("Schedule", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Admin panel", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Profile", "Index", "User")</li>
+                        <li>@Html.ActionLink("Log Out", "Logout", "Account")</li>
+                    </ul>
+                </div>
+            }
+            else
             {
-                
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
 
-                        @Html.ActionLink("Schedule", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
-             }
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    @Html.ActionLink("Schedule", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+            }
         </div>
     </div>
     <div class="container body-content">
@@ -52,6 +53,7 @@
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
