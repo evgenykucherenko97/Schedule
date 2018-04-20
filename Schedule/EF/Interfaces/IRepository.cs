@@ -10,8 +10,10 @@ namespace Schedule.EF.Interfaces
     {
         IEnumerable<T> GetAll();
         Task<IEnumerable<T>> GetAllAsync();
+
         T Get(Guid id);
         Task<T> GetAsync(Guid id);
+
         void Create(T item);
         void Update(T item);
         void Delete(Guid id);
