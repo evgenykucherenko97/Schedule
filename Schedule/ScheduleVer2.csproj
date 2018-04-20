@@ -252,6 +252,7 @@
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ScheduleDataContext.cs" />
     <Compile Include="Models\TeacherModel.cs" />
+    <Compile Include="Models\UserDisplayMosel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -303,7 +304,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\SuccessRegister.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Degrees\Create.cshtml" />
@@ -330,6 +330,7 @@
     <Content Include="Views\Groups\Index.cshtml" />
     <Content Include="Views\Load\CreateLoad.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

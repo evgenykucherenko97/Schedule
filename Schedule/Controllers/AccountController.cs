@@ -34,6 +34,14 @@ namespace Schedule.Controllers
         }
 
 
+        public async Task<ActionResult> Index()
+        {
+            UserDTO user = await UserService.GetUser(User.Identity.Name);
+            UserDisplayModel userToDisplay = AutoMapper.Mapper.Map<UserDisplayModel>(user);
+            return View(userToDisplay);
+        }
+
+
         public ActionResult Login()
         {
             return View();

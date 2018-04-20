@@ -1,0 +1,51 @@
+﻿@model Schedule.Models.UserDisplayModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<hr />
+<h2>Профиль</h2>
+<hr />
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Name)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Address)
+        </td>
+    </tr>
+</table>
+
+<hr />
+<p>
+        @Html.ActionLink("Edit", "Edit", "Account", new { @class = "btn btn-primary col-md-2 btn-xs btn-block" })
+        @Html.ActionLink("Delete", "Delete", "Account", new { @class = "btn btn-danger col-md-2 btn-xs btn-block" })     
+</p>

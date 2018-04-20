@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Schedule.BLL.DTO;
 using Schedule.Models;
 using Schedule.Models.DTOs;
 using System;
@@ -19,6 +20,7 @@ namespace Schedule.App_Start
                     (dst => dst.Position, src => src.MapFrom(e => e.Position.Name))
                 .ForMember
                     (dst => dst.Degree, src => src.MapFrom(e => e.Degree.Name));
+                cfg.CreateMap<UserDTO, UserDisplayModel>();
                 });
         }
     }
