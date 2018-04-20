@@ -13,10 +13,11 @@
     <title>Sign In - Schedule</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/signin.css" rel="stylesheet">
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        </div>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        </div*@>
     <div class="container">
 
         @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin", role = "form" }))
@@ -24,9 +25,9 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <hr />
+                
                 <h2 class="form-signin-heading">Please sign in</h2>
-                <hr />
+                
 
                 @Html.ValidationSummary(true)
                 <div class="form-group">
@@ -44,19 +45,12 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-lg" />
+                        <input type="submit" value="Log in" class="btn btn-lg btn-primary" />
                     </div>
                 </div>
             </div>
 
-        }
-        @*<form class="form-signin" role="form">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <input type="email" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>*@
+        }       
 
     </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
