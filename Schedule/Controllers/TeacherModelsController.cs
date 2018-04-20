@@ -11,11 +11,13 @@ using Schedule.Models;
 using System.Collections;
 using AutoMapper;
 using Schedule.Models.DTOs;
+using Schedule.EF;
 
 namespace Schedule.Controllers
 {
     public class TeacherModelsController : Controller
     {
+        UnitOfWork unitOfWork = new UnitOfWork();
         private ScheduleContext db = new ScheduleContext();
 
         // GET: TeacherModels
@@ -23,7 +25,8 @@ namespace Schedule.Controllers
         {
             //doesnt work properly, we dont save fields Position and Degree (just IDs) 
             //need to create new map for displaying 
-            var teachers = await db.TeacherModels.ToListAsync();
+            var teachers = unitOfWork.Teachers.GetAll();
+            //var teachers = await db.TeacherModels.ToListAsync();
             ArrayList teacherDTOs = new ArrayList();
             foreach(TeacherModel teacher in teachers)
             {
@@ -31,7 +34,8 @@ namespace Schedule.Controllers
                      Mapper.Map<TeacherDTO>(teacher)
                 );
             }
-            return View(await db.TeacherModels.ToListAsync());
+            return View(unitOfWork.Teachers.GetAll());
+            //return View(await db.TeacherModels.ToListAsync());
         }
 
         // GET: TeacherModels/Details/5

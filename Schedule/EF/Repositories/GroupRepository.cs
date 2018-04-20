@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Schedule.EF.Repositories
@@ -23,9 +24,19 @@ namespace Schedule.EF.Repositories
             return db.Groups;
         }
 
-        public Group Get(int id)
+        public async Task<IEnumerable<Group>> GetAllAsync()
+        {
+            return await db.Groups.ToListAsync();
+        }
+
+        public Group Get(Guid id)
         {
             return db.Groups.Find(id);
+        }
+
+        public async Task<Group> GetAsync(Guid id)
+        {
+            return await db.Groups.FindAsync(id);
         }
 
         public void Create(Group group)
@@ -38,7 +49,7 @@ namespace Schedule.EF.Repositories
             db.Entry(group).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             Group group = db.Groups.Find(id);
             if (group != null)

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Schedule.EF.Repositories
@@ -22,9 +23,19 @@ namespace Schedule.EF.Repositories
             return db.Files;
         }
 
-        public FileModel Get(int id)
+        public async Task<IEnumerable<FileModel>> GetAllAsync()
+        {
+            return await db.Files.ToListAsync();
+        }
+
+        public FileModel Get(Guid id)
         {
             return db.Files.Find(id);
+        }
+
+        public async Task<FileModel> GetAsync(Guid id)
+        {
+            return await db.Files.FindAsync(id);
         }
 
         public void Create(FileModel file)
@@ -37,7 +48,7 @@ namespace Schedule.EF.Repositories
             db.Entry(file).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             FileModel file = db.Files.Find(id);
             if (file != null)

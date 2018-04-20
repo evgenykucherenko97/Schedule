@@ -3,6 +3,7 @@ using Schedule.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Schedule.EF
@@ -68,6 +69,11 @@ namespace Schedule.EF
         public void Save()
         {
             db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await db.SaveChangesAsync();
         }
 
         private bool disposed = false;

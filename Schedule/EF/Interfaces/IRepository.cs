@@ -9,9 +9,11 @@ namespace Schedule.EF.Interfaces
     interface IRepository<T> where T : class
     {
         IEnumerable<T> GetAll();
-        T Get(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        T Get(Guid id);
+        Task<T> GetAsync(Guid id);
         void Create(T item);
         void Update(T item);
-        void Delete(int id);
+        void Delete(Guid id);
     }
 }

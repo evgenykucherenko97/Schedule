@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Schedule.EF.Repositories
@@ -22,9 +23,19 @@ namespace Schedule.EF.Repositories
             return db.Positions;
         }
 
-        public PositionModel Get(int id)
+        public async Task<IEnumerable<PositionModel>> GetAllAsync()
+        {
+            return await db.Positions.ToListAsync();
+        }
+
+        public PositionModel Get(Guid id)
         {
             return db.Positions.Find(id);
+        }
+
+        public async Task<PositionModel> GetAsync(Guid id)
+        {
+            return await db.Positions.FindAsync(id);
         }
 
         public void Create(PositionModel position)
@@ -37,7 +48,7 @@ namespace Schedule.EF.Repositories
             db.Entry(position).State = EntityState.Modified;
         }
 
-        public void Delete(int id)
+        public void Delete(Guid id)
         {
             PositionModel position = db.Positions.Find(id);
             if (position != null)
