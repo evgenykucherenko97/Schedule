@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
            
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -37,10 +37,12 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Overview</a></li>
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Analytics</a></li>
-                        <li><a href="#">Export</a></li>
+                        <li>@Html.ActionLink("Users", "Users", "Admin")</li>
+                        <li>@Html.ActionLink("Groups", "Index", "Groups")</li>
+                        <li>@Html.ActionLink("Degrees", "Index", "Degrees")</li>
+                        <li>@Html.ActionLink("Positions", "Index", "PositionModels")</li>
+                        <li>@Html.ActionLink("Teachers", "Index", "TeacherModels")</li>
+                        <li>@Html.ActionLink("Files", "Index", "File")</li>                        
                     </ul>
                     <ul class="nav nav-sidebar">
                         <li><a href="">Nav item</a></li>

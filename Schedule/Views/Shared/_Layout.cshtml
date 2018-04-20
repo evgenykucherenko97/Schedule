@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>@ViewBag.Title – Schedule</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -26,7 +26,9 @@
 
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Admin panel", "Index", "Admin")</li>
-                        <li>@Html.ActionLink("Profile", "Index", "User")</li>
+                        <li>@Html.ActionLink("Profile", "Index", "User")</li>                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Log Out", "Logout", "Account")</li>
                     </ul>
                 </div>
