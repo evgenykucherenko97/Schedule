@@ -1,44 +1,68 @@
 ﻿@model Schedule.Models.LoginModel
-
 @{
-    ViewBag.Title = "Login";
+    Layout = null;
 }
 
-<div class="jumbotron">
-    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
+<!DOCTYPE html>
 
-    <div class="form-horizontal">
-        <hr />
-        <h4>Use a local account to log in.</h4>
-        <hr />        
-
-        @Html.ValidationSummary(true)
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Логин" })
-                @Html.ValidationMessageFor(m => m.Email)
-            </div>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Schedule</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
         </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Пароль" })
-                @Html.ValidationMessageFor(m => m.Password)
+    <div class="container">
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-signin", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <hr />
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <hr />
+
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Логин" })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Пароль" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-lg" />
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Log in" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-        
-    }
-</div>
+        }
+        @*<form class="form-signin" role="form">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" required>
 
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>*@
 
-
-
-
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <!-- Placed at the end of the document so the pages load faster -->
+</body>
+</html>
