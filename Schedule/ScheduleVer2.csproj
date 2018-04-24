@@ -249,6 +249,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PositionModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\ScheduleDataContext.cs" />
     <Compile Include="Models\TeacherModel.cs" />
     <Compile Include="Models\UserDisplayMosel.cs" />

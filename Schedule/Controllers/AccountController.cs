@@ -102,9 +102,14 @@ namespace Schedule.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     Address = model.Address,
-                    Name = model.Name,
-                    Role = "user"
-                };
+                    Name = model.Name
+                };               
+                switch (model.Role)
+                {
+                    case Roles.Admin: userDto.Role = "admin"; break;
+                    case Roles.User: userDto.Role = "user"; break;
+                    default: userDto.Role = "user"; break;
+                }
                 OperationDetails operationDetails = await UserService.Create(userDto);
                 if (operationDetails.Succedeed)
                     return View("SuccessRegister");

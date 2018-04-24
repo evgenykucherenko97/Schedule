@@ -27,5 +27,9 @@ namespace Schedule.Models
         [Display(Name = "Имя")]
         [Required]
         public string Name { get; set; }
+
+        [Display(Name = "Роль")]
+        [Required]
+        public Roles Role { get; set; }
     }
 }
