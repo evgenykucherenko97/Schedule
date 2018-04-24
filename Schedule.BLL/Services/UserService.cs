@@ -242,28 +242,25 @@ namespace Schedule.BLL.Services
 
         public async Task<List<UserDTO>> GetAll()
         {
-            List<UserDTO> users = new List<UserDTO>();       
-
-            await Task.Run(() => 
-            {
+            List<UserDTO> users = new List<UserDTO>();                               
                 foreach (var item in
-                      Database.ClientManager.GetAll())
+                      Database.ClientManager.GetAll().ToList())
                 {
-                    users.Add(new UserDTO()
-                    {
-                        Id = item.ApplicationUser.Id,
-                        Email = item.ApplicationUser.Email,
-                        Password = null,
-                        UserName = item.ApplicationUser.Email,
-                        Name = item.Name,
-                        Address = item.Address,
-                        Role = item.ApplicationUser.Roles.ToList().ToString()
-                    });
+                UserDTO userDTO = new UserDTO()
+                {
+                    Id = item.ApplicationUser.Id,
+                    Email = item.ApplicationUser.Email,
+                    Password = null,
+                    UserName = item.ApplicationUser.Email,
+                    Name = item.Name,
+                    Address = item.Address,
+                    Role = Database.UserManager.GetRoles(item.ApplicationUser.Id).FirstOrDefault().ToString()
+                };
+                    users.Add(userDTO);
                 }
-            }
-        );
             return users;
         }
+        
            
     }
 }

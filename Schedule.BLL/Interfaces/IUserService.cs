@@ -16,6 +16,7 @@ namespace Schedule.BLL.Interfaces
         Task<OperationDetails> Edit(string name, UserDTO updatedUser);
         Task<OperationDetails> Delete(string name);
         Task<UserDTO> GetUser(string name);
+
         Task<List<UserDTO>> GetAll();
         
 

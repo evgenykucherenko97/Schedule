@@ -34,6 +34,12 @@ namespace Schedule.Controllers
         }
 
 
+        public async Task<ActionResult> GetAll()
+        {
+            List<UserDTO> users = await UserService.GetAll();
+            return View(users);
+        }
+
         public async Task<ActionResult> Index()
         {
             UserDTO user = await UserService.GetUser(User.Identity.Name);

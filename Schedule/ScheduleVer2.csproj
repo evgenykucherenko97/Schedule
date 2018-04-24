@@ -202,7 +202,6 @@
     <Compile Include="Controllers\LoadController.cs" />
     <Compile Include="Controllers\PositionModelsController.cs" />
     <Compile Include="Controllers\TeacherModelsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="EF\Interfaces\IRepository.cs" />
     <Compile Include="EF\Repositories\DegreeRepository.cs" />
     <Compile Include="EF\Repositories\FileRepository.cs" />
@@ -331,6 +330,7 @@
     <Content Include="Views\Load\CreateLoad.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\GetAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
