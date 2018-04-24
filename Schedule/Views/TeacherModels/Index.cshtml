@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Schedule.Models.TeacherModel>
+﻿@model IEnumerable<Schedule.Models.DTOs.TeacherDTO>
+
 
 @{
     ViewBag.Title = "Index";
@@ -22,10 +23,10 @@
             @Html.DisplayNameFor(model => model.Surname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdDegree)
+            @Html.DisplayNameFor(model => model.Degree)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IdPosition)
+            @Html.DisplayNameFor(model => model.Position)
         </th>
         <th></th>
     </tr>
@@ -42,10 +43,10 @@
             @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdDegree)
+            @Html.DisplayFor(modelItem => item.Degree)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdPosition)
+            @Html.DisplayFor(modelItem => item.Position)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

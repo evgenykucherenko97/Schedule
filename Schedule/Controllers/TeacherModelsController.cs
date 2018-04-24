@@ -27,14 +27,15 @@ namespace Schedule.Controllers
             //need to create new map for displaying 
             var teachers = unitOfWork.Teachers.GetAll();
             //var teachers = await db.TeacherModels.ToListAsync();
-            ArrayList teacherDTOs = new ArrayList();
+            List<TeacherDTO> teacherDTOs = new List<TeacherDTO>();
             foreach(TeacherModel teacher in teachers)
             {
                 teacherDTOs.Add(
                      Mapper.Map<TeacherDTO>(teacher)
                 );
             }
-            return View(unitOfWork.Teachers.GetAll());
+            return View(teacherDTOs);
+            //return View(unitOfWork.Teachers.GetAll());
             //return View(await db.TeacherModels.ToListAsync());
         }
 
@@ -50,6 +51,9 @@ namespace Schedule.Controllers
             {
                 return HttpNotFound();
             }
+            TeacherDTO teacherDTO = Mapper.Map<TeacherDTO>(teacherModel);
+            ViewBag.Degree = teacherDTO.Degree;
+            ViewBag.Position = teacherDTO.Position;
             return View(teacherModel);
         }
 
@@ -93,6 +97,14 @@ namespace Schedule.Controllers
             {
                 return HttpNotFound();
             }
+            Degree selectedDegree = await db.Degrees.FindAsync(teacherModel.IdDegree);
+            SelectList degrees = new SelectList(db.Degrees, "Id", "Name", selectedDegree);
+            ViewBag.Degrees = degrees;
+
+            PositionModel selectedPosition = await db.Positions.FindAsync(teacherModel.IdPosition);
+            SelectList positions = new SelectList(db.Positions, "Id", "Name", selectedPosition);
+            ViewBag.Positions = positions;
+
             return View(teacherModel);
         }
 

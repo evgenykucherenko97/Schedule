@@ -2,13 +2,13 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
+<h2>Информация</h2>
+<hr />
 <div>
-    <h4>TeacherModel</h4>
+    <h4>Данные о преподавателе</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -35,7 +35,7 @@
             @Html.DisplayFor(model => model.Surname)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.IdDegree)
         </dt>
 
@@ -49,8 +49,22 @@
 
         <dd>
             @Html.DisplayFor(model => model.IdPosition)
+        </dd>*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree)
+        </dt>
+
+        <dd>
+            <label>@ViewBag.Degree</label>
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            <label>@ViewBag.Position</label>
+        </dd>
     </dl>
 </div>
 <p>
