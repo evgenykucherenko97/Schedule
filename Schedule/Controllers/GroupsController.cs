@@ -26,7 +26,9 @@ namespace Schedule.Controllers
         [HttpPost, ActionName("Index")]
         public ActionResult RemoveAll()
         {
-            var all = from c in db.Groups select c;
+            var all = from c 
+                      in db.Groups
+                      select c;
             db.Groups.RemoveRange(db.Groups);
             db.SaveChanges();
             return RedirectToAction("Index");

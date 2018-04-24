@@ -12,7 +12,7 @@ namespace Schedule.Models.LoadModels
         //subject 
         public Subject Subject { get; set; }
         //groups
-        public Group Group { get; set; }
+        public List<Group> Groups { get; set; }
         //kind of classes
         public KindOfClasses KindOfClasses { get; set; }
         //form of control
@@ -24,14 +24,16 @@ namespace Schedule.Models.LoadModels
 
 
         //public string SubjectName { get; set; }
+
+            //group data
         //public string Faculty { get; set; }
         //public string Caf { get; set; }
         //public string Speciality { get; set; }
         //public int Grade { get; set; }
         public int Term { get; set; }
-        //public string Groups { get; set; }
-        public int GroupCount { get; set; }
-        public int StudentCount { get; set; }
+        // now it is propetry Count of listgroups public int GroupCount { get; set; }
+
+        // now we can get it from group list  public int StudentCount { get; set; }
 
 
 
