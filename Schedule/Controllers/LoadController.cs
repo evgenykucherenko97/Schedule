@@ -47,8 +47,7 @@ namespace Schedule.Controllers
             {
                 list = null;
                 //exception
-            }
-            
+            }            
             return RedirectToAction("Index");
         }
 
