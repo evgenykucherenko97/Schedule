@@ -56,7 +56,6 @@ namespace Schedule.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             return View(degree);
         }
 

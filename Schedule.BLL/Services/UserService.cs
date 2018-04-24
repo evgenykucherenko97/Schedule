@@ -108,10 +108,9 @@ namespace Schedule.BLL.Services
             }
         }
 
-
-        public async Task<OperationDetails> Edit(UserDTO currentUserDto, UserDTO updatedUser)
+        public async Task<OperationDetails> EditByIdWithoutPassword(string id, UserDTO updatedUser)
         {
-            ApplicationUser user = await Database.UserManager.FindByEmailAsync(currentUserDto.Name);
+            ApplicationUser user = await Database.UserManager.FindByIdAsync(id);
             if (user != null)
             {
                 user.Email = updatedUser.Email;
@@ -121,34 +120,18 @@ namespace Schedule.BLL.Services
                 if (!validEmail.Succeeded)
                 {
                     return new OperationDetails(false, "Пользователь с таким логином уже существует", "Email");
-                }
+                }                
 
-                IdentityResult validPass = null;
-                if (updatedUser.Password != string.Empty)
-                {
-                    validPass
-                        = await Database.UserManager.PasswordValidator.ValidateAsync(updatedUser.Password);
-
-                    if (validPass.Succeeded)
-                    {
-                        user.PasswordHash =
-                            Database.UserManager.PasswordHasher.HashPassword(updatedUser.Password);
-                    }
-                    else
-                    {
-                        return new OperationDetails(false, "Что-то не так с паролем!", "Password");
-                    }
-                }
-
-                if ((validEmail.Succeeded && validPass == null) ||
-                        (validEmail.Succeeded && updatedUser.Password != string.Empty && validPass.Succeeded))
+                if (validEmail.Succeeded)
                 {
                     IdentityResult result = await Database.UserManager.UpdateAsync(user);
+                    await Database.UserManager.RemoveFromRolesAsync(user.Id, Database.UserManager.GetRoles(user.Id).ToArray());
+                    await Database.UserManager.AddToRoleAsync(user.Id, updatedUser.Role);
                     ClientProfile profile = Database.ClientManager.Get(user.Id);
                     profile.Name = updatedUser.Name;
                     profile.Address = updatedUser.Address;
                     Database.ClientManager.Update(profile);
-
+                    await Database.SaveAsync();
                     if (result.Succeeded)
                     {
                         return new OperationDetails(true, "Изменение успешно!", "");
@@ -172,6 +155,29 @@ namespace Schedule.BLL.Services
         public async Task<OperationDetails> Delete(string name)
         {
             ApplicationUser user = await Database.UserManager.FindByEmailAsync(name);
+            if (user != null)
+            {
+                Database.ClientManager.Delete(user.Id);
+                IdentityResult result = await Database.UserManager.DeleteAsync(user);
+                await Database.SaveAsync();
+                if (result.Succeeded)
+                {
+                    return new OperationDetails(true, "Удаление успешно!", "");
+                }
+                else
+                {
+                    return new OperationDetails(false, "Что-то пошло не так", "");
+                }
+            }
+            else
+            {
+                return new OperationDetails(false, "Пользователь не найден", "");
+            }
+        }
+
+        public async Task<OperationDetails> DeleteById(string id)
+        {
+            ApplicationUser user = await Database.UserManager.FindByIdAsync(id);
             if (user != null)
             {
                 Database.ClientManager.Delete(user.Id);
@@ -236,6 +242,22 @@ namespace Schedule.BLL.Services
                 ClientProfile profile = Database.ClientManager.Get(user.Id);
                 userDto.Address = profile.Address;
                 userDto.Name = profile.Name;                
+            }
+            return userDto;
+        }
+
+        public async Task<UserDTO> GetUserById(string id)
+        {
+            UserDTO userDto = new UserDTO();
+            ApplicationUser user = await Database.UserManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                userDto.Email = user.Email;
+                userDto.Password = null;
+                userDto.UserName = user.Email;
+                ClientProfile profile = Database.ClientManager.Get(user.Id);
+                userDto.Address = profile.Address;
+                userDto.Name = profile.Name;
             }
             return userDto;
         }

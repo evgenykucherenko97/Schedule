@@ -236,6 +236,7 @@
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DTOs\TeacherDTO.cs" />
     <Compile Include="Models\EditModel.cs" />
+    <Compile Include="Models\EditModelForAdmin.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\HelpingModels\LoadHelperModel.cs" />
     <Compile Include="Models\LoadModels\CourseWork.cs" />
@@ -332,6 +333,9 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\GetAll.cshtml" />
+    <Content Include="Views\Account\DeleteConcrete.cshtml" />
+    <Content Include="Views\Account\DetailsConcrete.cshtml" />
+    <Content Include="Views\Account\EditConcrete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

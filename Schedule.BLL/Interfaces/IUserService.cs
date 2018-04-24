@@ -12,10 +12,12 @@ namespace Schedule.BLL.Interfaces
     public interface IUserService : IDisposable
     {
         Task<OperationDetails> Create(UserDTO userDto);
-        Task<OperationDetails> Edit(UserDTO currentUserDto, UserDTO updatedUser);
         Task<OperationDetails> Edit(string name, UserDTO updatedUser);
+        Task<OperationDetails> EditByIdWithoutPassword(string id, UserDTO updatedUser);
         Task<OperationDetails> Delete(string name);
+        Task<OperationDetails> DeleteById(string id);
         Task<UserDTO> GetUser(string name);
+        Task<UserDTO> GetUserById(string id);
 
         Task<List<UserDTO>> GetAll();
         

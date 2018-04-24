@@ -12,6 +12,7 @@ using System.Security.Claims;
 using Schedule.BLL.Interfaces;
 using Schedule.BLL.Infrastructure;
 using Schedule.BLL.DTO;
+using System.Net;
 
 namespace Schedule.Controllers
 {
@@ -33,7 +34,7 @@ namespace Schedule.Controllers
             }
         }
 
-
+        //admin
         public async Task<ActionResult> GetAll()
         {
             List<UserDTO> users = await UserService.GetAll();
@@ -85,11 +86,13 @@ namespace Schedule.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        //admin does
         public ActionResult Register()
         {
             return View();
         }
 
+        //admin does
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
@@ -186,5 +189,90 @@ namespace Schedule.Controllers
         }
 
 
+        //admin does
+        [HttpGet]
+        public async Task<ActionResult> DeleteConcrete(string id)
+        {
+            if (id == null || id == "")
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserDTO userDTO = await UserService.GetUserById(id);
+            return View(userDTO);
+        }
+
+        //admin does
+        [HttpPost]
+        [ActionName("DeleteConcrete")]
+        public async Task<ActionResult> DeleteConcreteConfirmed(string id)
+        {            
+            OperationDetails result = await UserService.DeleteById(id);
+            if (result.Succedeed)
+            {
+                return RedirectToAction("GetAll", "Account");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        //admin does
+        public async Task<ActionResult> DetailsConcrete(string id)
+        {
+            if (id == null || id == "")
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserDTO userDTO = await UserService.GetUserById(id);
+            return View(userDTO);
+        }
+
+        //admin does
+        public async Task<ActionResult> EditConcrete(string id)
+        {
+            UserDTO user = await UserService.GetUserById(id);
+            EditModelForAdmin model = new EditModelForAdmin()
+            {
+                Id = id,
+                Name = user.Name,
+                Address = user.Address,
+                Email = user.Email,
+                Role = Roles.User
+            };
+            switch (user.Role)
+            {
+                case "user": model.Role = Roles.User; break;
+                case "admin": model.Role = Roles.Admin; break;
+                default: model.Role = Roles.User; break;
+            }
+            //EditModel model = AutoMapper.Mapper.Map<EditModel>(user);
+            return View(model);
+        }
+
+        //admin does
+        [HttpPost]
+        public async Task<ActionResult> EditConcrete(EditModelForAdmin model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserDTO userDto = new UserDTO
+                {
+                    Id = model.Id,
+                    Email = model.Email,
+                    Address = model.Address,
+                    Name = model.Name
+                };
+                switch (model.Role)
+                {
+                    case Roles.Admin: userDto.Role = "admin"; break;
+                    case Roles.User: userDto.Role = "user"; break;
+                    default: userDto.Role = "user"; break;
+                }
+                OperationDetails operationDetails = await UserService.EditByIdWithoutPassword(userDto.Id, userDto);
+                if (operationDetails.Succedeed)
+                    return RedirectToAction("GetAll", "Account");
+                else
+                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+            }
+            return View(model);
+        }
     }
 }
