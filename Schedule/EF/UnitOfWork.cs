@@ -17,6 +17,8 @@ namespace Schedule.EF
         private GroupRepository groupRepository;
         private PositionRepository positionRepository;
         private TeacherRepository teacherRepository;
+        
+
 
         public DegreeRepository Degrees
         {

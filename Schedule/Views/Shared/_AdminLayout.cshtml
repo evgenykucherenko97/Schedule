@@ -59,13 +59,23 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar" role="navigation">
                     <ul class="nav nav-sidebar">
-                        <li>@Html.ActionLink("Groups", "Index", "Groups")</li>
-                        <li>@Html.ActionLink("Degrees", "Index", "Degrees")</li>
-                        <li>@Html.ActionLink("Positions", "Index", "PositionModels")</li>
-                        <li>@Html.ActionLink("Teachers", "Index", "TeacherModels")</li>
-                        <li>@Html.ActionLink("Files", "Index", "File")</li>         
+                        <li>@Html.ActionLink("Нагрузка", "Index", "Load")</li>
                     </ul>
-                    
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Группы", "Index", "Groups")</li>
+                        <li>@Html.ActionLink("Преподаватели", "Index", "TeacherModels")</li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Ученые степени", "Index", "Degrees")</li>
+                        <li>@Html.ActionLink("Должности", "Index", "PositionModels")</li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Файлы системы", "Index", "File")</li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li>@Html.ActionLink("Пользователи", "GetAll", "Account")</li>
+                    </ul>
+
                 </div>
                 <div class="col-sm-offset-3 col-md-offset-2 main">
                     @RenderBody()
