@@ -34,7 +34,7 @@ namespace Schedule.EF.Repositories
             return db.Groups.Find(id);
         }
 
-        public async Task<Group> GetAsync(Guid id)
+        public async Task<Group> GetAsync(Guid? id)
         {
             return await db.Groups.FindAsync(id);
         }

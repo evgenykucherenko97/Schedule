@@ -33,7 +33,7 @@ namespace Schedule.EF.Repositories
             return db.Degrees.Find(id);
         }
 
-        public async Task<Degree> GetAsync(Guid id)
+        public async Task<Degree> GetAsync(Guid? id)
         {
             return await db.Degrees.FindAsync(id);
         }

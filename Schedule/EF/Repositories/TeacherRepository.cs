@@ -33,7 +33,7 @@ namespace Schedule.EF.Repositories
             return db.TeacherModels.Find(id);
         }
 
-        public async Task<TeacherModel> GetAsync(Guid id)
+        public async Task<TeacherModel> GetAsync(Guid? id)
         {
             return await db.TeacherModels.FindAsync(id);
         }

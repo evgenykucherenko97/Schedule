@@ -33,7 +33,7 @@ namespace Schedule.EF.Repositories
             return db.Files.Find(id);
         }
 
-        public async Task<FileModel> GetAsync(Guid id)
+        public async Task<FileModel> GetAsync(Guid? id)
         {
             return await db.Files.FindAsync(id);
         }

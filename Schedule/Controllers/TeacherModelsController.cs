@@ -17,15 +17,13 @@ namespace Schedule.Controllers
 {
     public class TeacherModelsController : Controller
     {
-        UnitOfWork unitOfWork = new UnitOfWork();
-        private ScheduleContext db = new ScheduleContext();
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        //private ScheduleContext db = new ScheduleContext();
 
         // GET: TeacherModels
         public async Task<ActionResult> Index()
         {
-            //doesnt work properly, we dont save fields Position and Degree (just IDs) 
-            //need to create new map for displaying 
-            var teachers = unitOfWork.Teachers.GetAll();
+            var teachers = await unitOfWork.Teachers.GetAllAsync();
             //var teachers = await db.TeacherModels.ToListAsync();
             List<TeacherDTO> teacherDTOs = new List<TeacherDTO>();
             foreach(TeacherModel teacher in teachers)
@@ -46,7 +44,8 @@ namespace Schedule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            //TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            TeacherModel teacherModel = await unitOfWork.Teachers.GetAsync(id);
             if (teacherModel == null)
             {
                 return HttpNotFound();
@@ -60,9 +59,11 @@ namespace Schedule.Controllers
         // GET: TeacherModels/Create
         public ActionResult Create()
         {
-            SelectList degrees = new SelectList(db.Degrees, "Id", "Name");
+            //SelectList degrees = new SelectList(db.Degrees, "Id", "Name");
+            SelectList degrees = new SelectList(unitOfWork.Degrees.GetAll(), "Id", "Name");
             ViewBag.Degrees = degrees;
-            SelectList positions = new SelectList(db.Positions, "Id", "Name");
+            //SelectList positions = new SelectList(db.Positions, "Id", "Name");
+            SelectList positions = new SelectList(unitOfWork.Positions.GetAll(), "Id", "Name");
             ViewBag.Positions = positions;
             return View();
         }
@@ -77,8 +78,10 @@ namespace Schedule.Controllers
             if (ModelState.IsValid)
             {
                 teacherModel.Id = Guid.NewGuid();
-                db.TeacherModels.Add(teacherModel);
-                await db.SaveChangesAsync();
+                unitOfWork.Teachers.Create(teacherModel);
+                await unitOfWork.SaveAsync();
+                //db.TeacherModels.Add(teacherModel);
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -92,17 +95,23 @@ namespace Schedule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            //TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            TeacherModel teacherModel = await unitOfWork.Teachers.GetAsync(id);
             if (teacherModel == null)
             {
                 return HttpNotFound();
             }
-            Degree selectedDegree = await db.Degrees.FindAsync(teacherModel.IdDegree);
-            SelectList degrees = new SelectList(db.Degrees, "Id", "Name", selectedDegree);
+
+            //Degree selectedDegree = await db.Degrees.FindAsync(teacherModel.IdDegree);
+            Degree selectedDegree = await unitOfWork.Degrees.GetAsync(teacherModel.IdDegree);
+            //SelectList degrees = new SelectList(db.Degrees, "Id", "Name", selectedDegree);
+            SelectList degrees = new SelectList(await unitOfWork.Degrees.GetAllAsync(), "Id", "Name", selectedDegree);
             ViewBag.Degrees = degrees;
 
-            PositionModel selectedPosition = await db.Positions.FindAsync(teacherModel.IdPosition);
-            SelectList positions = new SelectList(db.Positions, "Id", "Name", selectedPosition);
+            //PositionModel selectedPosition = await db.Positions.FindAsync(teacherModel.IdPosition);
+            PositionModel selectedPosition = await unitOfWork.Positions.GetAsync(teacherModel.IdPosition);
+            //SelectList positions = new SelectList(db.Positions, "Id", "Name", selectedPosition);
+            SelectList positions = new SelectList(await unitOfWork.Positions.GetAllAsync(), "Id", "Name", selectedPosition);
             ViewBag.Positions = positions;
 
             return View(teacherModel);
@@ -117,8 +126,10 @@ namespace Schedule.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(teacherModel).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                unitOfWork.Teachers.Update(teacherModel);
+                await unitOfWork.SaveAsync();
+                //db.Entry(teacherModel).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(teacherModel);
@@ -131,7 +142,8 @@ namespace Schedule.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            //TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            TeacherModel teacherModel = await unitOfWork.Teachers.GetAsync(id);
             if (teacherModel == null)
             {
                 return HttpNotFound();
@@ -144,9 +156,11 @@ namespace Schedule.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
-            TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
-            db.TeacherModels.Remove(teacherModel);
-            await db.SaveChangesAsync();
+            //TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);
+            //db.TeacherModels.Remove(teacherModel);
+            //await db.SaveChangesAsync();
+            unitOfWork.Teachers.Delete(id);
+            await unitOfWork.SaveAsync();
             return RedirectToAction("Index");
         }
 
@@ -154,7 +168,8 @@ namespace Schedule.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                unitOfWork.Dispose();
+                //db.Dispose();
             }
             base.Dispose(disposing);
         }

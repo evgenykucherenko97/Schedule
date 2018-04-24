@@ -12,7 +12,7 @@ namespace Schedule.EF.Interfaces
         Task<IEnumerable<T>> GetAllAsync();
 
         T Get(Guid id);
-        Task<T> GetAsync(Guid id);
+        Task<T> GetAsync(Guid? id);
 
         void Create(T item);
         void Update(T item);
