@@ -1,3 +1,8 @@
 ﻿@{
+
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (HttpContext.Current.User.IsInRole("admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
 }
