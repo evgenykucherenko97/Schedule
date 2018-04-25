@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Schedule.Models.LoadModels
 {
-    public class RegularLoad
+    public class RegularStudyDayLoadSubjects
     {
         public Guid Id { get; set; }
         public string LoadName { get; set; }
@@ -13,10 +13,8 @@ namespace Schedule.Models.LoadModels
         public Subject Subject { get; set; }
         //groups
         public List<Group> Groups { get; set; }
-        //kind of classes
-        public KindOfClasses KindOfClasses { get; set; }
-        //form of control
-        public FormOfControl FormOfControl { get; set; }
+        
+       
         //teacher
         public TeacherModel Teacher { get; set; }
         //another informstion
@@ -37,40 +35,39 @@ namespace Schedule.Models.LoadModels
 
 
 
-        public int? CountAWeekPerFirstHalf { get; set; }
-        public int? CountAWeekPerSecondHalf { get; set; }
+        //kind of classes
+        public KindOfClasses KindOfClasses { get; set; }
+        //kind of classes set two values
+        public double? HoursOfWork { get; set; }
+        public double? HoursOfWorkAll { get; set; }
 
-        //public int? LectionCountAWeekPerFirstHalf { get; set; }
-        //public int? LectionCountPerFirstHalf { get; set; }
-        //public int? LabCountAWeekPerFirstHalf { get; set; }
-        //public int? LabCountPerFirstHalf { get; set; }
-        //public int? PracticeCountAWeekPerFirstHalf { get; set; }
-        //public int? PracticeCountPerFirstHalf { get; set; }
+        //form of control
+        public FormOfControl FormOfControl { get; set; }
+        public double? HoursForControl { get; set; }
 
-        //public int? LectionCountAWeekPerSecondHalf { get; set; }
-        //public int? LectionCountPerSecondHalf { get; set; }
-        //public int? LabCountAWeekPerSecondHalf { get; set; }
-        //public int? LabCountPerSecondHalf { get; set; }
-        //public int? PracticeCountAWeekPerSecondHalf { get; set; }
-        //public int? PracticeCountPerSecondHalf { get; set; }
-
-        public int? RGR { get; set; }
-        public int? RR { get; set; }
-        public int? RK { get; set; }
+        //public int? RGR { get; set; }
+        //public int? RR { get; set; }
+        //public int? RK { get; set; }
+        public double? DZ { get; set; }
 
 
         //public int? CourserWork { get; set; }
         //public int? CourseProject { get; set; }
         public CourseWork CourseWork { get; set; }
+        public double? HoursForCourseWork { get; set; }
+
+        public double? Cons { get; set; }
 
 
-        //public bool? FormControlZach { get; set; }
-        //public bool? FormControlDiv { get; set; }
-        //public bool? FormControlExam { get; set; }
+        #region
+        //GEK hours
+        #endregion
 
         public double AllCredits { get; set; }
         public double SelfWorkHours { get; set; }
-        public double StudyLoad { get; set; }
-        public double Npr { get; set; }
+        //public double StudyLoad { get; set; }
+        //public double Npr { get; set; }
+
+        public bool IsFRL { get; set; }
     }
 }

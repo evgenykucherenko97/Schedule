@@ -234,6 +234,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
+    <Compile Include="Models\DTOs\DayLoadDTO.cs" />
     <Compile Include="Models\DTOs\TeacherDTO.cs" />
     <Compile Include="Models\EditModel.cs" />
     <Compile Include="Models\EditModelForAdmin.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Models\HelpingModels\LoadHelperModel.cs" />
     <Compile Include="Models\LoadModels\CourseWork.cs" />
     <Compile Include="Models\LoadModels\FormOfControl.cs" />
+    <Compile Include="Models\LoadModels\GEKLoadModel.cs" />
     <Compile Include="Models\LoadModels\Group.cs" />
     <Compile Include="Models\LoadModels\GroupKind.cs" />
     <Compile Include="Models\LoadModels\KindOfClasses.cs" />
