@@ -65,6 +65,9 @@ namespace Schedule.Classes
                 temp.HoursForCourseWork = null;
                 temp.HoursOfWork = tableDataDTODay.LectionCountPerFirstHalf + tableDataDTODay.LectionCountPerSecondHalf;
                 temp.HoursOfWorkAll = temp.HoursOfWork;
+                temp.AllCredits = (double)temp.HoursOfWorkAll + (double)temp.HoursForControl;
+                if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
                 loads.Add(temp);
             }
 
@@ -107,6 +110,9 @@ namespace Schedule.Classes
                     temp.HoursOfWorkAll = temp.HoursOfWork;
                     //temp.CourseWork = CourseWork.None;
                     //temp.HoursForCourseWork = null;
+                    temp.AllCredits = (double)temp.HoursOfWorkAll;
+                    if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                    if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
                     loads.Add(temp);
                 }                
             }
@@ -148,6 +154,10 @@ namespace Schedule.Classes
                     temp.Term = tableDataDTODay.Term;
                     temp.HoursOfWork = tableDataDTODay.PracticeCountPerFirstHalf + tableDataDTODay.PracticeCountPerSecondHalf;
                     temp.HoursOfWorkAll = temp.HoursOfWork;
+                    
+                    temp.AllCredits = (double)temp.HoursOfWorkAll;
+                    if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                    if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
                     //temp.CourseWork = CourseWork.None;
                     //temp.HoursForCourseWork = null;
                     loads.Add(temp);

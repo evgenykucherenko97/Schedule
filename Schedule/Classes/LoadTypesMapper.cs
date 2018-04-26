@@ -18,6 +18,7 @@ namespace Schedule.Classes
             loadDTO.GroupCount = load.Groups.Count;
             loadDTO.Grade = load.Groups.FirstOrDefault().Grade;
             loadDTO.Term = load.Term;
+            loadDTO.Cons = load.Cons;
             loadDTO.DZ = load.DZ;
             loadDTO.SelfWork = load.SelfWorkHours;
             loadDTO.AllHours = load.AllCredits;
