@@ -2,6 +2,7 @@
 using Schedule.BLL.DTO;
 using Schedule.Models;
 using Schedule.Models.DTOs;
+using Schedule.Models.LoadModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,9 @@ namespace Schedule.App_Start
                     (dst => dst.Degree, src => src.MapFrom(e => db.Degrees.Find(e.IdDegree).Name));
                 cfg.CreateMap<UserDTO, UserDisplayModel>();
                 cfg.CreateMap<UserDTO, EditModel>();
-                });
+            });
         }
     }
 }
+
+

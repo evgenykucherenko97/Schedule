@@ -8,32 +8,20 @@ namespace Schedule.Models.LoadModels
     public class RegularStudyDayLoadSubjects
     {
         public Guid Id { get; set; }
-        public string LoadName { get; set; }
+
+        public DayLoadRegular Load { get; set; }
+        public Guid? IdLoad { get; set; }
         //subject 
         public Subject Subject { get; set; }
         //groups
         public List<Group> Groups { get; set; }
-        
-       
+        public int StudentCount { get; set; }
+
+
         //teacher
         public TeacherModel Teacher { get; set; }
-        //another informstion
-
-
-
-        //public string SubjectName { get; set; }
-
-            //group data
-        //public string Faculty { get; set; }
-        //public string Caf { get; set; }
-        //public string Speciality { get; set; }
-        //public int Grade { get; set; }
+        
         public int Term { get; set; }
-        // now it is propetry Count of listgroups public int GroupCount { get; set; }
-
-        // now we can get it from group list  public int StudentCount { get; set; }
-
-
 
         //kind of classes
         public KindOfClasses KindOfClasses { get; set; }
@@ -50,18 +38,10 @@ namespace Schedule.Models.LoadModels
         //public int? RK { get; set; }
         public double? DZ { get; set; }
 
-
-        //public int? CourserWork { get; set; }
-        //public int? CourseProject { get; set; }
         public CourseWork CourseWork { get; set; }
         public double? HoursForCourseWork { get; set; }
 
         public double? Cons { get; set; }
-
-
-        #region
-        //GEK hours
-        #endregion
 
         public double AllCredits { get; set; }
         public double SelfWorkHours { get; set; }

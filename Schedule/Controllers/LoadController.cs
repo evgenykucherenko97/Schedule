@@ -1,7 +1,9 @@
 ﻿using Schedule.Classes;
 using Schedule.COM;
 using Schedule.Models;
+using Schedule.Models.DTOs;
 using Schedule.Models.HelpingModels;
+using Schedule.Models.LoadModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -47,7 +49,27 @@ namespace Schedule.Controllers
             {
                 list = null;
                 //exception
-            }            
+            }
+            List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
+            foreach(var load in loads)
+            {
+                db.DayLoadDTOs.Add(LoadTypesMapper.DayLoadDTO(load));
+                db.SaveChanges();
+            }
+            
+            return RedirectToAction("CreatedLoad");
+        }
+
+        public ActionResult CreatedLoad()
+        {
+            return View(db.DayLoadDTOs.ToList());
+        }
+
+        [HttpPost, ActionName("CreatedLoad")]
+        public ActionResult RemoveAll()
+        {
+            db.DayLoadDTOs.RemoveRange(db.DayLoadDTOs);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

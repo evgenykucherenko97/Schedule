@@ -8,6 +8,11 @@ namespace Schedule.Models.LoadModels
     public class GEKLoadModel
     {
         public Guid Id { get; set; }
+
+        public DayLoadRegular Load { get; set; }
+        public Guid? IdLoad { get; set; }
+
+        public int MyProperty { get; set; }
         public string LoadName { get; set; }
         public Subject Subject { get; set; }
         //groups
