@@ -108,11 +108,25 @@ namespace Schedule.Classes
                     temp.Term = tableDataDTODay.Term;
                     temp.HoursOfWork = tableDataDTODay.LabCountPerFirstHalf + tableDataDTODay.LabCountPerSecondHalf;
                     temp.HoursOfWorkAll = temp.HoursOfWork;
+                    #region
+                    //course
+                    if(tableDataDTODay.CourserWork != null && tableDataDTODay.CourserWork != 0)
+                    {
+                        temp.CourseWork = CourseWork.CourseWork;
+                        temp.HoursForCourseWork = temp.StudentCount * 3;
+                    }
+                    else if (tableDataDTODay.CourseProject != null && tableDataDTODay.CourseProject != 0)
+                    {
+                        temp.CourseWork = CourseWork.CourseProject;
+                        temp.HoursForCourseWork = temp.StudentCount * 4;
+                    }
+                    #endregion
                     //temp.CourseWork = CourseWork.None;
                     //temp.HoursForCourseWork = null;
                     temp.AllCredits = (double)temp.HoursOfWorkAll;
                     if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
                     if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
+                    if (temp.HoursForCourseWork != null) temp.AllCredits += (double)temp.HoursForCourseWork; 
                     loads.Add(temp);
                 }                
             }
@@ -154,12 +168,25 @@ namespace Schedule.Classes
                     temp.Term = tableDataDTODay.Term;
                     temp.HoursOfWork = tableDataDTODay.PracticeCountPerFirstHalf + tableDataDTODay.PracticeCountPerSecondHalf;
                     temp.HoursOfWorkAll = temp.HoursOfWork;
-                    
+
+                    #region
+                    //course
+                    if (tableDataDTODay.CourserWork != null && tableDataDTODay.CourserWork != 0)
+                    {
+                        temp.CourseWork = CourseWork.CourseWork;
+                        temp.HoursForCourseWork = temp.StudentCount * 3;
+                    }
+                    else if (tableDataDTODay.CourseProject != null && tableDataDTODay.CourseProject != 0)
+                    {
+                        temp.CourseWork = CourseWork.CourseProject;
+                        temp.HoursForCourseWork = temp.StudentCount * 4;
+                    }
+                    #endregion
+
                     temp.AllCredits = (double)temp.HoursOfWorkAll;
                     if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
                     if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
-                    //temp.CourseWork = CourseWork.None;
-                    //temp.HoursForCourseWork = null;
+                    if (temp.HoursForCourseWork != null) temp.AllCredits += (double)temp.HoursForCourseWork;
                     loads.Add(temp);
                 }
             }
