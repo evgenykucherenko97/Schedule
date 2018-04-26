@@ -72,5 +72,40 @@ namespace Schedule.Classes
             }
             return loadDTO;
         }
+
+        public static DayLoadDTO DayLoadDTO(RegularStudyDayLoadGEK load)
+        {
+            DayLoadDTO loadDTO = new DayLoadDTO();
+            loadDTO.Id = load.Id;
+            loadDTO.SubjectName = load.Subject.Name;
+            loadDTO.StudentCount = load.StudentCount;
+            loadDTO.GroupCount = load.Groups.Count;
+            loadDTO.Grade = load.Groups.FirstOrDefault().Grade;
+            loadDTO.Term = load.Term;
+            loadDTO.Cons = load.Cons;
+            loadDTO.DZ = null;
+            
+            loadDTO.SelfWork = null;
+            loadDTO.AllHours = load.AllCredits;     
+            loadDTO.ExamHours = null;
+            loadDTO.DivHours = null;      
+
+            loadDTO.GraduatingBaschelorWork = load.GraduatingBaschelorWork;
+            loadDTO.DP = load.DP;
+            loadDTO.ProizvPractice = load.ProizvPractice;
+            loadDTO.PreDiplomPractice = load.PreDiplomPractice;
+            loadDTO.Magistr = load.Magistr;
+            loadDTO.Aspir = load.Aspir;
+            loadDTO.GEK = load.GEK;
+
+            loadDTO.TeacherName = "teacher Name";
+            loadDTO.KP_KR = null;            
+            loadDTO.HoursOfLections = null;
+            loadDTO.HoursOfLabWork = null;
+            loadDTO.HoursOfLabWorkAll = null;
+            loadDTO.HoursOfPractWork = null;
+            loadDTO.HoursOfPractWorkAll = null;            
+            return loadDTO;
+        }
     }
 }

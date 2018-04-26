@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Schedule.Models.LoadModels
 {
-    public class GEKLoadModel
+    public class RegularStudyDayLoadGEK
     {
         public Guid Id { get; set; }
 
@@ -17,8 +17,9 @@ namespace Schedule.Models.LoadModels
         public Subject Subject { get; set; }
         //groups
         public List<Group> Groups { get; set; }
+        public int StudentCount { get; set; }
 
-
+        //form of control?????????
         //teacher
         public TeacherModel Teacher { get; set; }
         public int Term { get; set; }

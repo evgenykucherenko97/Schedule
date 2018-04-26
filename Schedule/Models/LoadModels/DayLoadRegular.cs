@@ -10,12 +10,12 @@ namespace Schedule.Models.LoadModels
         public Guid Id { get; set; }
 
         public List<RegularStudyDayLoadSubjects> regularStudyDayLoadSubjects;
-        public List<GEKLoadModel> gekLoadModels;
+        public List<RegularStudyDayLoadGEK> gekLoadModels;
         public DayLoadRegular()
         {
             Id = Guid.NewGuid();
             regularStudyDayLoadSubjects = new List<RegularStudyDayLoadSubjects>();
-            gekLoadModels = new List<GEKLoadModel>();
+            gekLoadModels = new List<RegularStudyDayLoadGEK>();
         }
     }
 }
