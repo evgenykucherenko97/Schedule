@@ -213,7 +213,7 @@ namespace Schedule.COM
                 int count = 8;
                 for (; ; )
                 {
-                    excelcells = xlSheet.get_Range("A" + count.ToString(), Type.Missing);
+                    excelcells = xlSheet.get_Range("B" + count.ToString(), Type.Missing);
                     String num_r = Convert.ToString(excelcells.Value);
                     if (num_r == null)
                     {
@@ -221,7 +221,7 @@ namespace Schedule.COM
                     }
                     TableDataDTOZaoch temp = new TableDataDTOZaoch();
 
-                    temp.id = Convert.ToInt32(num_r);
+                    temp.id = count - 7;
                     excelcells = xlSheet.get_Range("B" + count.ToString(), Type.Missing);
                     temp.SubjectName = Convert.ToString(excelcells.Value);
                     excelcells = xlSheet.get_Range("C" + count.ToString(), Type.Missing);
@@ -306,10 +306,8 @@ namespace Schedule.COM
                     temp.StudyLoad = Convert.ToDouble(excelcells.Value);
                     excelcells = xlSheet.get_Range("AG" + count.ToString(), Type.Missing);
                     temp.Npr = Convert.ToDouble(excelcells.Value);
-                    excelcells = xlSheet.get_Range("AH" + count.ToString(), Type.Missing);
-                    temp.Gap = Convert.ToInt32(excelcells.Value);
                     excelcells = xlSheet.get_Range("AI" + count.ToString(), Type.Missing);
-                    temp.Npr = Convert.ToString(excelcells.Value);
+                    temp.TeachingDepartment = Convert.ToString(excelcells.Value);
 
                     data.Add(temp);
                     count++;

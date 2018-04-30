@@ -40,29 +40,41 @@ namespace Schedule.Controllers
             if (model.LoadKind == LoadKind.Day)
             {
                 list = Import_COM.Import_Excel(file_path);
+                List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
+                foreach (var load in loads)
+                {
+                    db.DayLoadDTOs.Add(LoadTypesMapper.DayLoadDTO(load));
+                    db.SaveChanges();
+                }
+                return RedirectToAction("CreatedLoad");
             }
             else if (model.LoadKind == LoadKind.ZO)
             {
                 list = Import_COM.Import_Excel_Zaoch(file_path);
+                 RegularStudyZOLoadSubjects load = LoadConverter.FromDTOtoZORegularLoad(list[0]);
+                db.ZOLoadDTOs.Add(LoadTypesMapper.ZOLoadDTO(load));
+                db.SaveChanges();
+                return RedirectToAction("CreatedLoadZO");
             }
             else
             {
                 list = null;
+                return RedirectToAction("Index");
                 //exception
             }
-            List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
-            foreach(var load in loads)
-            {
-                db.DayLoadDTOs.Add(LoadTypesMapper.DayLoadDTO(load));
-                db.SaveChanges();
-            }
             
-            return RedirectToAction("CreatedLoad");
+            
+            return RedirectToAction("Index");
         }
 
         public ActionResult CreatedLoad()
         {
             return View(db.DayLoadDTOs.ToList());
+        }
+
+        public ActionResult CreatedLoadZO()
+        {
+            return View(db.ZOLoadDTOs.ToList());
         }
 
         [HttpPost, ActionName("CreatedLoad")]

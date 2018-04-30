@@ -26,7 +26,9 @@ namespace Schedule.Classes
                 (tableDataDTODay.LectionCountPerFirstHalf != 0 || tableDataDTODay.LectionCountPerSecondHalf != 0))
             {
                 temp = new RegularStudyDayLoadSubjects();
+                ////////////////////////////////////////////
                 temp.Id = Guid.NewGuid();
+                /////////////////////////////////////////////
                 temp.KindOfClasses = KindOfClasses.Lections;
                 temp.Subject = new Subject()
                 {
@@ -77,7 +79,9 @@ namespace Schedule.Classes
                 foreach (var group in groups)
                 {                    
                     temp = new RegularStudyDayLoadSubjects();
+                    /////////////////////////////////////////
                     temp.Id = Guid.NewGuid();
+                    ////////////////////////////////////////////////
                     temp.KindOfClasses = KindOfClasses.Labs;
                     temp.Subject = new Subject()
                     {
@@ -137,7 +141,9 @@ namespace Schedule.Classes
                 foreach (var group in groups)
                 {
                     temp = new RegularStudyDayLoadSubjects();
+                    /////////////////////////////////////////
                     temp.Id = Guid.NewGuid();
+                    ///////////////////////////////////
                     temp.KindOfClasses = KindOfClasses.Labs;
                     temp.Subject = new Subject()
                     {
@@ -237,12 +243,18 @@ namespace Schedule.Classes
         {
             ScheduleContext db = new ScheduleContext();
             RegularStudyZOLoadSubjects load = new RegularStudyZOLoadSubjects();
-            string[] groupNames = tableDataDTOZaoch.Groups.Split(null);           
+            string[] groupNames = tableDataDTOZaoch.Groups.Split(null);
+            ////////to constructor
+            load.Groups = new List<Group>();
+            load.Id = Guid.NewGuid();
+            /////////////////////////////////////////////
             foreach (string group in groupNames)
             {
-                load.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                //load.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                load.Groups.Add(db.Groups.Where(p => p.StudentCount == 6).FirstOrDefault());
             }
             load.setStudentCount();
+            
             load.Term = tableDataDTOZaoch.Term;
             load.setPartOfYear();
             load.Subject = new Subject()
@@ -281,7 +293,7 @@ namespace Schedule.Classes
             load.PracticeCountSecondAll = load.PracticeCountSecond;
             load.Cons = tableDataDTOZaoch.ConsultBeforeExamOrDiv;
             load.ConsAll = load.Cons;
-            load.AllHours = tableDataDTOZaoch.AllHours;
+            load.AllHours = tableDataDTOZaoch.StudyLoad;
             load.Npr = tableDataDTOZaoch.Npr;
             load.CreditsECTS = (double)tableDataDTOZaoch.CreditsECTS;
             load.SelfWorkHours = tableDataDTOZaoch.SelfWorkHours;

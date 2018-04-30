@@ -158,7 +158,7 @@ namespace Schedule.Classes
 
             loadDTO.AllHours = load.AllHours;
 
-            loadDTO.TeacherName = load.Teacher.Name;
+            loadDTO.TeacherName = "teacher";//load.Teacher.Name;
 
             loadDTO.PartOfYear = load.PartOfYear;
             loadDTO.Npr = load.Npr;

@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201804261203568_AddDayLoadDTOMigration.Designer.cs">
       <DependentUpon>201804261203568_AddDayLoadDTOMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804301331423_AddZOLoadDTOMigration.cs" />
+    <Compile Include="Migrations\201804301331423_AddZOLoadDTOMigration.Designer.cs">
+      <DependentUpon>201804301331423_AddZOLoadDTOMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DTOs\DayLoadDTO.cs" />
@@ -348,6 +352,7 @@
     <Content Include="Views\Account\DetailsConcrete.cshtml" />
     <Content Include="Views\Account\EditConcrete.cshtml" />
     <Content Include="Views\Load\CreatedLoad.cshtml" />
+    <Content Include="Views\Load\CreatedLoadZO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
@@ -391,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804261203568_AddDayLoadDTOMigration.resx">
       <DependentUpon>201804261203568_AddDayLoadDTOMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804301331423_AddZOLoadDTOMigration.resx">
+      <DependentUpon>201804301331423_AddZOLoadDTOMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
