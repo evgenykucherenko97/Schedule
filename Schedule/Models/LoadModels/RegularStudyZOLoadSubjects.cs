@@ -9,8 +9,8 @@ namespace Schedule.Models.LoadModels
     {
         public Guid Id { get; set; }
 
-        //public DayLoadRegular Load { get; set; }
-        //public Guid? IdLoad { get; set; }
+        public ZOLoadRegular Load { get; set; }
+        public Guid? IdLoad { get; set; }
         //subject 
         public Subject Subject { get; set; }
         //groups
