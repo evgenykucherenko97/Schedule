@@ -232,5 +232,60 @@ namespace Schedule.Classes
             //public double Npr { get; set; }
             return loads;
         }
+
+        public static RegularStudyZOLoadSubjects FromDTOtoZORegularLoad(TableDataDTOZaoch tableDataDTOZaoch)
+        {
+            ScheduleContext db = new ScheduleContext();
+            RegularStudyZOLoadSubjects load = new RegularStudyZOLoadSubjects();
+            string[] groupNames = tableDataDTOZaoch.Groups.Split(null);           
+            foreach (string group in groupNames)
+            {
+                load.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+            }
+            load.setStudentCount();
+            load.Term = tableDataDTOZaoch.Term;
+            load.setPartOfYear();
+            load.Subject = new Subject()
+            {
+                Id = Guid.NewGuid(),
+                Name = tableDataDTOZaoch.SubjectName
+            };
+            foreach (var group in load.Groups)
+            {
+                load.Subject.Name += ", " + group.Name;
+            }
+            if ((bool)tableDataDTOZaoch.FormControlZach)
+            {
+                load.FormOfControl = FormOfControl.FormControlZach;
+            }
+            if ((bool)tableDataDTOZaoch.FormControlDiv)
+            {
+                load.FormOfControl = FormOfControl.FormControlDiv;
+            }
+            if ((bool)tableDataDTOZaoch.FormControlExam)
+            {
+                load.FormOfControl = FormOfControl.FormControlExam;
+            }
+            load.setHoursForControl();
+            load.DZ = load.StudentCount / 2.0 * (tableDataDTOZaoch.RK + tableDataDTOZaoch.RGR + tableDataDTOZaoch.RR);
+            load.DateFirst = "";
+            load.LectionCountFirst = tableDataDTOZaoch.LectionCountFirst;
+            load.LectionCountSecond = 0;
+            load.PracticeLabCountFirst = tableDataDTOZaoch.LabCountFirst + tableDataDTOZaoch.PracticeFirst;
+            load.PracticeLabCountFirstAll = load.PracticeLabCountFirst;
+            load.BetweenSessionConsult = tableDataDTOZaoch.BetweenSessionConsult;
+            load.DateSecond = "";
+            load.LabCountSecond = tableDataDTOZaoch.LabCountSecond;
+            load.LabCountSecondAll = load.LabCountSecond;
+            load.PracticeCountSecond = tableDataDTOZaoch.PracticeSecond;
+            load.PracticeCountSecondAll = load.PracticeCountSecond;
+            load.Cons = tableDataDTOZaoch.ConsultBeforeExamOrDiv;
+            load.ConsAll = load.Cons;
+            load.AllHours = tableDataDTOZaoch.AllHours;
+            load.Npr = tableDataDTOZaoch.Npr;
+            load.CreditsECTS = tableDataDTOZaoch.CreditsECTS;
+            load.SelfWorkHours = tableDataDTOZaoch.SelfWorkHours;
+            return load;
+        }
     }
 }
