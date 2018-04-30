@@ -53,7 +53,7 @@ namespace Schedule.Classes
                 loadDTO.HoursOfLabWorkAll = load.HoursOfWorkAll;
                 loadDTO.HoursOfPractWork = null;
                 loadDTO.HoursOfPractWorkAll = null;
-            }        
+            }
             if (load.KindOfClasses == KindOfClasses.Lections)
             {
                 loadDTO.HoursOfLections = load.HoursOfWork;
@@ -84,11 +84,11 @@ namespace Schedule.Classes
             loadDTO.Term = load.Term;
             loadDTO.Cons = load.Cons;
             loadDTO.DZ = null;
-            
+
             loadDTO.SelfWork = null;
-            loadDTO.AllHours = load.AllCredits;     
+            loadDTO.AllHours = load.AllCredits;
             loadDTO.ExamHours = null;
-            loadDTO.DivHours = null;      
+            loadDTO.DivHours = null;
 
             loadDTO.GraduatingBaschelorWork = load.GraduatingBaschelorWork;
             loadDTO.DP = load.DP;
@@ -99,12 +99,71 @@ namespace Schedule.Classes
             loadDTO.GEK = load.GEK;
 
             loadDTO.TeacherName = "teacher Name";
-            loadDTO.KP_KR = null;            
+            loadDTO.KP_KR = null;
             loadDTO.HoursOfLections = null;
             loadDTO.HoursOfLabWork = null;
             loadDTO.HoursOfLabWorkAll = null;
             loadDTO.HoursOfPractWork = null;
-            loadDTO.HoursOfPractWorkAll = null;            
+            loadDTO.HoursOfPractWorkAll = null;
+            return loadDTO;
+        }
+
+        public static ZOLoadDTO ZOLoadDTO(RegularStudyZOLoadSubjects load)
+        {
+            ZOLoadDTO loadDTO = new ZOLoadDTO();
+            loadDTO.Id = load.Id;
+            loadDTO.SubjectName = load.Subject.Name;
+            loadDTO.Grade = load.Groups.FirstOrDefault().Grade;
+            loadDTO.GroupCount = load.Groups.Count;
+            loadDTO.StudentCount = (int)load.StudentCount;
+            loadDTO.Term = load.Term;
+
+            //наставная сес
+            loadDTO.DateFirst = load.DateFirst;
+            loadDTO.LectionCountFirst = load.LectionCountFirst;
+            loadDTO.PracticeLabCountFirst = load.PracticeLabCountFirst;
+            loadDTO.PracticeLabCountFirstAll = load.PracticeLabCountFirstAll;
+
+            loadDTO.DZ = load.DZ;
+            loadDTO.BetweenSessionConsult = load.BetweenSessionConsult;
+
+            //зачетная
+            loadDTO.DateSecond = load.DateSecond;
+            loadDTO.LectionCountSecond = load.LectionCountSecond;
+            loadDTO.PracticeCountSecond = load.PracticeCountSecond;
+            loadDTO.PracticeCountSecondAll = load.PracticeCountSecondAll;
+            loadDTO.LabCountSecond = load.LabCountSecond;
+            loadDTO.LabCountSecondAll = load.LabCountSecondAll;
+
+            loadDTO.HoursForCourseWork = load.HoursForCourseWork;
+
+            loadDTO.Cons = load.Cons;
+            loadDTO.ConsAll = load.ConsAll;
+
+            if (load.FormOfControl == FormOfControl.FormControlExam)
+            {
+                loadDTO.ExamHours = load.HoursForControl;
+                loadDTO.DivHours = null;
+            }
+            else if (load.FormOfControl == FormOfControl.FormControlDiv || load.FormOfControl == FormOfControl.FormControlZach)
+            {
+                loadDTO.ExamHours = null;
+                loadDTO.DivHours = load.HoursForControl;
+            }
+            else
+            {
+                loadDTO.ExamHours = null;
+                loadDTO.DivHours = null;
+            }
+
+            loadDTO.AllHours = load.AllHours;
+
+            loadDTO.TeacherName = load.Teacher.Name;
+
+            loadDTO.PartOfYear = load.PartOfYear;
+            loadDTO.Npr = load.Npr;
+            loadDTO.CreditsECTS = load.CreditsECTS;
+            loadDTO.SelfWorkHours = load.SelfWorkHours;
             return loadDTO;
         }
     }
