@@ -273,7 +273,7 @@ namespace Schedule.Classes
             load.LectionCountSecond = 0;
             load.PracticeLabCountFirst = tableDataDTOZaoch.LabCountFirst + tableDataDTOZaoch.PracticeFirst;
             load.PracticeLabCountFirstAll = load.PracticeLabCountFirst;
-            load.BetweenSessionConsult = tableDataDTOZaoch.BetweenSessionConsult;
+            load.BetweenSessionConsult = (double)tableDataDTOZaoch.BetweenSessionConsult;
             load.DateSecond = "";
             load.LabCountSecond = tableDataDTOZaoch.LabCountSecond;
             load.LabCountSecondAll = load.LabCountSecond;
@@ -283,8 +283,19 @@ namespace Schedule.Classes
             load.ConsAll = load.Cons;
             load.AllHours = tableDataDTOZaoch.AllHours;
             load.Npr = tableDataDTOZaoch.Npr;
-            load.CreditsECTS = tableDataDTOZaoch.CreditsECTS;
+            load.CreditsECTS = (double)tableDataDTOZaoch.CreditsECTS;
             load.SelfWorkHours = tableDataDTOZaoch.SelfWorkHours;
+            //course
+            load.CourseWork = CourseWork.None;
+            if (tableDataDTOZaoch.CourserWork != null && tableDataDTOZaoch.CourserWork != 0)
+            {
+                load.CourseWork = CourseWork.CourseWork;
+            }
+            else if (tableDataDTOZaoch.CourseProject != null && tableDataDTOZaoch.CourseProject != 0)
+            {
+                load.CourseWork = CourseWork.CourseProject;
+            }
+            load.setHoursForCourseWork();
             return load;
         }
     }

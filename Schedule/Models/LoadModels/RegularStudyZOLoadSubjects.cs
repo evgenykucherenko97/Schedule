@@ -59,6 +59,21 @@ namespace Schedule.Models.LoadModels
 
         public CourseWork CourseWork { get; set; }
         public double? HoursForCourseWork { get; set; }
+        public void setHoursForCourseWork()
+        {
+            if (CourseWork == CourseWork.CourseProject)
+            {
+                HoursForCourseWork = StudentCount * 4;
+            }
+            else if (CourseWork == CourseWork.CourseWork)
+            {
+                HoursForCourseWork = StudentCount * 3;
+            }
+            else
+            {
+                HoursForCourseWork = null;
+            }
+        }
 
         //public double ConsultBeforeExamOrDiv { get; set; }
         public double? Cons { get; set; }

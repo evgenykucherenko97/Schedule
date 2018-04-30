@@ -20,16 +20,16 @@ namespace Schedule.Classes
         public int StudentCount { get; set; }
 
         //наставная сес
-        public int LectionCountFirst { get; set; }        
-        public int LabCountFirst { get; set; }        
-        public int PracticeFirst { get; set; }
-        public int AllClassesCountFirst { get; set; }
+        public int? LectionCountFirst { get; set; }        
+        public int? LabCountFirst { get; set; }        
+        public int? PracticeFirst { get; set; }
+        public int? AllClassesCountFirst { get; set; }
 
         
         //зачетная
-        public int LabCountSecond { get; set; }
-        public int PracticeSecond { get; set; }
-        public int AllClassesCountSecond { get; set; }
+        public int? LabCountSecond { get; set; }
+        public int? PracticeSecond { get; set; }
+        public int? AllClassesCountSecond { get; set; }
 
         // Всього аудиторних годин 
         //     Самостійна робота 
@@ -39,22 +39,22 @@ namespace Schedule.Classes
         //     Консультаціі перед іспитом та заліком
 
 
-        public double AllAuditorHours { get; set; }
-        public double SelfWorkHours { get; set; }
-        public double AllHours { get; set; }
-        public double CreditsECTS { get; set; }
-        public double BetweenSessionConsult { get; set; }
-        public double ConsultBeforeExamOrDiv { get; set; }
+        public double? AllAuditorHours { get; set; }
+        public double? SelfWorkHours { get; set; }
+        public double? AllHours { get; set; }
+        public double? CreditsECTS { get; set; }
+        public double? BetweenSessionConsult { get; set; }
+        public double? ConsultBeforeExamOrDiv { get; set; }
 
-        public int RGR { get; set; }
-        public int RR { get; set; }
-        public int RK { get; set; }
-        public int CourserWork { get; set; }
-        public int CourseProject { get; set; }
+        public int? RGR { get; set; }
+        public int? RR { get; set; }
+        public int? RK { get; set; }
+        public int? CourserWork { get; set; }
+        public int? CourseProject { get; set; }
 
-        public bool FormControlZach { get; set; }
-        public bool FormControlDiv { get; set; }
-        public bool FormControlExam { get; set; }
+        public bool? FormControlZach { get; set; }
+        public bool? FormControlDiv { get; set; }
+        public bool? FormControlExam { get; set; }
 
         
         public double StudyLoad { get; set; }
