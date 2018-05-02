@@ -15,7 +15,10 @@ namespace Schedule.Models
         public DbSet<TeacherModel> TeacherModels { get; set; }
         public DbSet<FileModel> Files { get; set; }
         public DbSet<Group> Groups { get; set; }
+
         public DbSet<DayLoadDTO> DayLoadDTOs { get; set; }
         public DbSet<ZOLoadDTO> ZOLoadDTOs { get; set; }
+
+        public DbSet<DayLoadRegular> DayLoadRegulars { get; set; }
     }
 }

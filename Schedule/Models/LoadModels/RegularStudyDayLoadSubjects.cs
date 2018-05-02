@@ -9,7 +9,7 @@ namespace Schedule.Models.LoadModels
     {
         public Guid Id { get; set; }
 
-        public DayLoadRegular Load { get; set; }
+        //public DayLoadRegular Load { get; set; }
         public Guid? IdLoad { get; set; }
         //subject 
         public Subject Subject { get; set; }
@@ -20,7 +20,8 @@ namespace Schedule.Models.LoadModels
 
         //teacher
         public TeacherModel Teacher { get; set; }
-        
+        //public Guid TeacherId { get; set; }
+
         public int Term { get; set; }
 
         //kind of classes
