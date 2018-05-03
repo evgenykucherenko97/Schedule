@@ -100,6 +100,7 @@ namespace Schedule.Controllers
             }
 
             ViewBag.LoadName = load.LoadName;
+            ViewBag.Id = load.Id;
             switch (load.LoadKind)
             {
                 case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;

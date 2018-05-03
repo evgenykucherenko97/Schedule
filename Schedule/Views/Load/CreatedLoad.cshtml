@@ -17,171 +17,206 @@
         </div>
     }
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SubjectName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Grade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GroupCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Term)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DZ)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoursOfLections)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoursOfLabWork)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoursOfLabWorkAll)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoursOfPractWork)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KP_KR)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cons)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExamHours)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DivHours)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GraduatingBaschelorWork)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProizvPractice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PreDiplomPractice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Magistr)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aspir)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GEK)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SelfWork)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AllHours)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TeacherName)
-        </th>
-        <th></th>
-    </tr>
+<style>
+    .layer {
+        overflow-x: scroll; /* Добавляем полосу прокрутки */
+    }
+    th, td {
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+</style>
+<div class="table-responsive layer">
+    <table class="table table-condensed table-hover table-bordered text-center">
+        <thead>
+            <tr>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.SubjectName)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.GroupCount)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.StudentCount)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Term)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.DZ)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfLections)
+                </th>
+                <th colspan="2" class="text-center">
+                    Лекции
+                    @*@Html.DisplayNameFor(model => model.HoursOfLabWork)*@
+                </th>
+                <th colspan="2" class="text-center">
+                    Практики
+                    @*@Html.DisplayNameFor(model => model.HoursOfLabWorkAll)*@
+                </th>
+                @*<th>
+                    @Html.DisplayNameFor(model => model.HoursOfPractWork)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
+                </th>*@
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.KP_KR)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Cons)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.ExamHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.DivHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.GraduatingBaschelorWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.DP)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.ProizvPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.PreDiplomPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Magistr)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Aspir)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.GEK)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.SelfWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.AllHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.TeacherName)
+                </th>                
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubjectName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GroupCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StudentCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Term)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DZ)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoursOfLections)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoursOfLabWork)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoursOfLabWorkAll)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoursOfPractWork)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoursOfPractWorkAll)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KP_KR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cons)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExamHours)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DivHours)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GraduatingBaschelorWork)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProizvPractice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PreDiplomPractice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Magistr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aspir)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GEK)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SelfWork)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AllHours)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.TeacherName)*@
-            @Html.DropDownListFor(modelItem => item.TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })
-            @*@Html.DropDownList("Teachers")*@
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfLabWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfLabWorkAll)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfPractWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.SubjectName)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.GroupCount)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.StudentCount)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Term)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.DZ)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.HoursOfLections)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.HoursOfLabWork)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.HoursOfLabWorkAll)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.HoursOfPractWork)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.HoursOfPractWorkAll)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.KP_KR)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Cons)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.ExamHours)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.DivHours)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.GraduatingBaschelorWork)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.DP)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.ProizvPractice)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.PreDiplomPractice)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Magistr)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Aspir)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.GEK)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.SelfWork)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.AllHours)
+                    </td>
+                    <td class="text-center">
+                        @*@Html.DisplayFor(modelItem => item.TeacherName)*@
+                        @Html.DropDownListFor(modelItem => item.TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })
+                        @*@Html.DropDownList("Teachers")*@
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                        </td>*@
+                </tr>
+            }
 
-</table>
+        </tbody>
+    </table>
+</div>
+    <hr />
+    <p>
+        @Html.ActionLink("Save", "DoneLoad", "Load", new { id = ViewBag.Id }, new { @class = "btn btn-success col-md-2 btn-xs btn-block" })
+    </p>
