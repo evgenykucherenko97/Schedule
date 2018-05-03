@@ -8,7 +8,7 @@ namespace Schedule.Models.DTOs
     public class DayLoadDTO
     {
         public Guid Id { get; set; }
-        public Guid? LoadId { get; set; }
+        //public Guid? LoadId { get; set; }
 
         public string SubjectName { get; set; }
         public int Grade { get; set; }
@@ -40,5 +40,6 @@ namespace Schedule.Models.DTOs
         public double? AllHours { get; set; }
 
         public string TeacherName { get; set; }
+        public Guid? TeacherId { get; set; }
     }
 }

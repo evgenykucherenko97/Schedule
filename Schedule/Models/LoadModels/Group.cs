@@ -52,5 +52,14 @@ namespace Schedule.Models.LoadModels
 
         [Display(Name = "Форма обучения")]
         public GroupClassesKind GroupClassesKind { get; set; }
+
+        public virtual ICollection<RegularStudyDayLoadSubjects> RegularStudyDayLoadSubjects { get; set; }
+        public virtual ICollection<RegularStudyDayLoadGEK> RegularStudyDayLoadGEK { get; set; }
+        public Group()
+        {
+            RegularStudyDayLoadSubjects = new List<RegularStudyDayLoadSubjects>();
+            RegularStudyDayLoadGEK = new List<RegularStudyDayLoadGEK>();
+        }
+
     }
 }

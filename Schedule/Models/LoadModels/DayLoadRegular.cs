@@ -14,9 +14,9 @@ namespace Schedule.Models.LoadModels
         public StudentKind StudentKind { get; set; }
 
 
-        public List<RegularStudyDayLoadSubjects> regularStudyDayLoadSubjects;
-        public List<RegularStudyDayLoadGEK> gekLoadModels;
-        public List<FileModel> Files;
+        public ICollection<RegularStudyDayLoadSubjects> regularStudyDayLoadSubjects { get; set; }
+        public ICollection<RegularStudyDayLoadGEK> gekLoadModels { get; set; }
+        public ICollection<FileModel> Files { get; set; }
         public DayLoadRegular()
         {
             Id = Guid.NewGuid();

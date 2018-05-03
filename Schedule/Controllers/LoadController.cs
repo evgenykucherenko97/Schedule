@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,7 +22,8 @@ namespace Schedule.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            return View(await db.Files.ToListAsync());
+
+            return View(await db.DayLoadRegulars.ToListAsync());
         }
 
         [HttpGet]
@@ -35,43 +37,45 @@ namespace Schedule.Controllers
         [HttpPost]
         public async Task<ActionResult> CreateLoad(LoadHelperModel model)
         {
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            
             dynamic list;
             string file_path = Server.MapPath("~/Files/" + model.Filepath);
             if (model.LoadKind == LoadKind.Day)
             {
-
-                //////////////////////////
+                list = Import_COM.Import_Excel(file_path);
+                List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
+                foreach(var load in loads)
+                {
+                    foreach(var group in load.Groups)
+                    {
+                        db.Groups.Attach(group);
+                    }
+                }
                 DayLoadRegular dayLoadRegular = new DayLoadRegular()
                 {
                     LoadName = model.Name,
                     StudentKind = model.StudentKind,
-                    LoadKind = model.LoadKind
+                    LoadKind = model.LoadKind,
+                    regularStudyDayLoadSubjects = loads
                 };
+                for (int i = 0; i<dayLoadRegular.regularStudyDayLoadSubjects.Count; i++)
+                {
+                    dayLoadRegular.regularStudyDayLoadSubjects.ElementAt(i).LoadId = dayLoadRegular.Id;
+                }
+
                 db.DayLoadRegulars.Add(dayLoadRegular);
                 await db.SaveChangesAsync();
-                //////////////////////////
-
-
-
-                list = Import_COM.Import_Excel(file_path);
-                List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
-                DayLoadDTO temp;
-                foreach (var load in loads)
-                {
-                    temp = LoadTypesMapper.DayLoadDTO(load);
-                    temp.LoadId = dayLoadRegular.Id;
-                    db.DayLoadDTOs.Add(temp);
-                    db.SaveChanges();
-                }
-                
-
                 return RedirectToAction("CreatedLoad", new { id = dayLoadRegular.Id });
             }
             else if (model.LoadKind == LoadKind.ZO)
             {
                 list = Import_COM.Import_Excel_Zaoch(file_path);
                  RegularStudyZOLoadSubjects load = LoadConverter.FromDTOtoZORegularLoad(list[0]);
-                db.ZOLoadDTOs.Add(LoadTypesMapper.ZOLoadDTO(load));
+                //db.ZOLoadDTOs.Add(LoadTypesMapper.ZOLoadDTO(load));
                 db.SaveChanges();
                 return RedirectToAction("CreatedLoadZO");
             }
@@ -79,50 +83,59 @@ namespace Schedule.Controllers
             {
                 list = null;
                 return RedirectToAction("Index");
-                //exception
             }
         }
 
         public ActionResult CreatedLoad(Guid? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            
             DayLoadRegular load = db.DayLoadRegulars.Find(id);
-            List<DayLoadDTO> loadsDTO = db.DayLoadDTOs.Where(p => p.LoadId == load.Id).ToList();            
+            if (load == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.LoadName = load.LoadName;
+            switch (load.LoadKind)
+            {
+                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
+                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
+            }
+
+            List<RegularStudyDayLoadSubjects> list = db.RegularStudyDayLoadSubjects
+                .Include(p => p.Teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            if (list == null)
+            {                
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);   
+            }
+            List<DayLoadDTO> loadsDTO = new List<DayLoadDTO>();
+            foreach (var loadReg in list)
+            {
+                loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
+            }
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
             return View(loadsDTO);
         }
 
         public ActionResult CreatedLoadZO()
         {
-            return View(db.ZOLoadDTOs.ToList());
+            return null;
+           // return View(db.ZOLoadDTOs.ToList());
         }
 
         [HttpPost, ActionName("CreatedLoad")]
         public ActionResult RemoveAll()
         {
-            db.DayLoadDTOs.RemoveRange(db.DayLoadDTOs);
+            //db.DayLoadDTOs.RemoveRange(db.DayLoadDTOs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        //public async Task<ActionResult> Parse(Guid? Id)
-        //{
-        //    if (Id == null)
-        //    {
-        //        return null;
-        //    }
-        //    FileModel filemodel = await db.Files.FindAsync(Id);
-        //    if (filemodel == null)
-        //    {
-        //        return null;
-        //    }
-        //    // Путь к файлу
-        //    string file_path = Server.MapPath("~/Files/" + filemodel.Path);
-        //    List<TableDataDTODay> list = Import_COM.Import_Excel(file_path);
-        //    //// Тип файла - content-type
-        //    //string file_type = filemodel.Path.Substring(filemodel.Path.IndexOf('.'));
-        //    //// Имя файла - необязательно
-        //    //string file_name = filemodel.Path;
-        //    //return File(file_path, file_type, file_name);
-        //    return RedirectToAction("Index");
-        //}
     }
 }

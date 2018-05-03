@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<Schedule.Models.DTOs.DayLoadDTO>
 
 @{
-    ViewBag.Title = "CreatedLoad";
+    ViewBag.Title = "Нагрузка";
 }
 
-<h2>CreatedLoad</h2>
-
+<h2>@ViewBag.LoadName</h2>
+<hr />
+<h3>@ViewBag.LoadKind</h3>
 <p>
     @using (Html.BeginForm())
     {
@@ -171,7 +172,9 @@
             @Html.DisplayFor(modelItem => item.AllHours)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TeacherName)
+            @*@Html.DisplayFor(modelItem => item.TeacherName)*@
+            @Html.DropDownListFor(modelItem => item.TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })
+            @*@Html.DropDownList("Teachers")*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

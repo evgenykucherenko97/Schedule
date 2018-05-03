@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Schedule.Models.FileModel>
+﻿@model IEnumerable<Schedule.Models.LoadModels.DayLoadRegular>
 
 <hr />
 <h2>Load Creating Panel</h2>
@@ -7,29 +7,29 @@
     <li>@Html.ActionLink("Let`s get it started...", "CreateLoad", "Load")</li>
 </ul>
 <hr />
-@*<table class="table">
+<table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Path)
+            @Html.DisplayNameFor(model => model.LoadName)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Date)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Path)
+            @Html.DisplayFor(modelItem => item.LoadName)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Date)
-        </td>
+        </td>*@
         <td>
-            @Html.ActionLink("Parse", "Parse", new { id=item.Id }) 
+            @Html.ActionLink("Details", "CreatedLoad", new { id=item.Id }) 
         </td>
     </tr>
 }
 
-</table>*@
+</table>

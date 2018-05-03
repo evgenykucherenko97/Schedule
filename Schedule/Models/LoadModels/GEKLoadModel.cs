@@ -16,7 +16,11 @@ namespace Schedule.Models.LoadModels
         public string LoadName { get; set; }
         public Subject Subject { get; set; }
         //groups
-        public List<Group> Groups { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
+        public RegularStudyDayLoadGEK()
+        {
+            Groups = new List<Group>();
+        }
         public int StudentCount { get; set; }
 
         //form of control?????????
