@@ -11,16 +11,16 @@ namespace Schedule.Models.DTOs
         public Guid Id { get; set; }
         //public Guid? LoadId { get; set; }
 
-        [Display(Name = "Название предмета")]
+        [Display(Name = "Название_учебного_предмета")]
         public string SubjectName { get; set; }
 
         [Display(Name = "Курс")]
         public int Grade { get; set; }
 
-        [Display(Name = "Кол групп")]
+        [Display(Name = "Количество групп")]
         public int GroupCount { get; set; }
 
-        [Display(Name = "Кол студентов")]
+        [Display(Name = "  Колтчество студентов")]
         public int StudentCount { get; set; }
 
         [Display(Name = "Семестр")]
@@ -28,19 +28,19 @@ namespace Schedule.Models.DTOs
 
 
 
-        [Display(Name = "ДЗ")]
+        [Display(Name = "Домашнее задание")]
         public double? DZ { get; set; }
 
         [Display(Name = "Лекции")]
         public double? HoursOfLections { get; set; }
 
-        [Display(Name = "Час")]
+        [Display(Name = "Час/группа")]
         public double? HoursOfLabWork { get; set; }
 
         [Display(Name = "Всего")]
         public double? HoursOfLabWorkAll { get; set; }
 
-        [Display(Name = "Час")]
+        [Display(Name = "Час/группа")]
         public double? HoursOfPractWork { get; set; }
 
         [Display(Name = "Всего")]
@@ -49,32 +49,32 @@ namespace Schedule.Models.DTOs
 
 
 
-        [Display(Name = "КП КР")]
+        [Display(Name = "Курсовой проект/работа")]
         public double? KP_KR { get; set; }
 
-        [Display(Name = "Конс")]
+        [Display(Name = "Консультация")]
         public double? Cons { get; set; }
 
 
 
-        [Display(Name = "Экз час")]
+        [Display(Name = "Часов для экзамена")]
         public double? ExamHours { get; set; }
 
-        [Display(Name = "Зачет час")]
+        [Display(Name = "Часы под зачет")]
         public double? DivHours { get; set; }
 
 
 
-        [Display(Name = "Вып раб бак")]
+        [Display(Name = "Выпускная работа бакалавра")]
         public double? GraduatingBaschelorWork { get; set; }
 
         [Display(Name = "ДП")]
         public double? DP { get; set; }
 
-        [Display(Name = "Произв ПР")]
+        [Display(Name = "Производственная Практика")]
         public double? ProizvPractice { get; set; }
 
-        [Display(Name = "Пред ДП")]
+        [Display(Name = "ПредДП")]
         public double? PreDiplomPractice { get; set; }
 
         [Display(Name = "Магистратура")]
@@ -83,7 +83,7 @@ namespace Schedule.Models.DTOs
         [Display(Name = "Аспирантура")]
         public double? Aspir { get; set; }
 
-        [Display(Name = "GEK")]
+        [Display(Name = "работа в GEK")]
         public double? GEK { get; set; }
 
         [Display(Name = "Самостоятельная работа")]

@@ -125,18 +125,32 @@ namespace Schedule.Controllers
             return View(loadsDTO);
         }
 
+        [HttpPost]
+        public ActionResult CreatedLoad(List<Schedule.Models.DTOs.DayLoadDTO> model)
+        {
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            foreach (var item in model)
+            {
+                RegularStudyDayLoadSubjects load = db.RegularStudyDayLoadSubjects.Where(t => t.Id == item.Id).FirstOrDefault();
+                load.Teacher = db.TeacherModels.Where(t => t.Id == item.TeacherId).FirstOrDefault();
+                db.Entry(load).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return null;
+        }
+
+        public ActionResult DoneLoad(Guid? IdLoad, List<Schedule.Models.DTOs.DayLoadDTO> model)
+        {
+            return null;
+        }
+
         public ActionResult CreatedLoadZO()
         {
             return null;
            // return View(db.ZOLoadDTOs.ToList());
-        }
-
-        [HttpPost, ActionName("CreatedLoad")]
-        public ActionResult RemoveAll()
-        {
-            //db.DayLoadDTOs.RemoveRange(db.DayLoadDTOs);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
     }
 }

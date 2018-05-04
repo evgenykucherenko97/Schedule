@@ -13,6 +13,11 @@ namespace Schedule.Classes
         {
             DayLoadDTO loadDTO = new DayLoadDTO();
             loadDTO.Id = load.Id;
+            if (load.Teacher != null)
+            {
+                loadDTO.TeacherName = load.Teacher.Name;
+                loadDTO.TeacherId = load.Teacher.Id;
+            }
             loadDTO.SubjectName = load.Subject.Name;
             loadDTO.StudentCount = load.StudentCount;
             loadDTO.GroupCount = load.Groups.Count;
@@ -44,7 +49,6 @@ namespace Schedule.Classes
             loadDTO.Magistr = null;
             loadDTO.Aspir = null;
             loadDTO.GEK = null;
-            loadDTO.TeacherName = "teacher Name";
             loadDTO.KP_KR = load.HoursForCourseWork;
             if (load.KindOfClasses == KindOfClasses.Labs)
             {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Schedule.Models.DTOs.DayLoadDTO>
+﻿@model List<Schedule.Models.DTOs.DayLoadDTO>
 
 @{
     ViewBag.Title = "Нагрузка";
@@ -7,16 +7,7 @@
 <h2>@ViewBag.LoadName</h2>
 <hr />
 <h3>@ViewBag.LoadKind</h3>
-<p>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Remove All" class="btn btn-default" />
-        </div>
-    }
-</p>
+<hr />
 <style>
     .layer {
         overflow-x: scroll; /* Добавляем полосу прокрутки */
@@ -26,9 +17,196 @@
         margin: 0 auto;
     }
 </style>
+@using (Html.BeginForm())
+{
+    <div class="table-responsive layer">
+        <table class="table table-hover table-bordered text-center">
+        <thead>
+            <tr>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].SubjectName)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].Grade)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].GroupCount)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].StudentCount)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].Term)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].DZ)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].HoursOfLections)
+                </th>
+                <th colspan="2" class="text-center">
+                    Лекции
+                </th>
+                <th colspan="2" class="text-center">
+                    Практики
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].KP_KR)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].Cons)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].ExamHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].DivHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].GraduatingBaschelorWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].DP)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].ProizvPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].PreDiplomPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].Magistr)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].Aspir)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].GEK)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].SelfWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].AllHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model[0].TeacherName)
+                </th>                
+            </tr>
+
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model[0].HoursOfLabWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model[0].HoursOfLabWorkAll)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model[0].HoursOfPractWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model[0].HoursOfPractWorkAll)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i< Model.Count; i++)
+            {
+                <tr>
+                    @Html.HiddenFor(modelItem => modelItem[i].Id)
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].SubjectName, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].Grade, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].GroupCount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].StudentCount, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].Term, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].DZ, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].HoursOfLections, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].HoursOfLabWork, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].HoursOfLabWorkAll, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].HoursOfPractWork, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].HoursOfPractWorkAll, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].KP_KR, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].Cons, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].ExamHours, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].DivHours, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].GraduatingBaschelorWork, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].DP, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].ProizvPractice, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].PreDiplomPractice, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].Magistr, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].Aspir, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].GEK, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].SelfWork, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @Html.EditorFor(modelItem => modelItem[i].AllHours, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    </td>
+                    <td class="text-center">
+                        @*@Html.DisplayFor(modelItem => item.TeacherName)*@
+                        @Html.DropDownListFor(modelItem => modelItem[i].TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })
+                        @*@Html.DropDownList("Teachers")*@
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                        </td>*@
+                </tr>
+                }
+
+        </tbody>
+    </table>
+    </div>
+    <input type="submit" value="Remove All" class="btn btn-success col-md-2 btn-xs btn-block" />
+}
 <div class="table-responsive layer">
     <table class="table table-condensed table-hover table-bordered text-center">
-        <thead>
+        @*<thead>
             <tr>
                 <th rowspan="2" class="text-center">
                     @Html.DisplayNameFor(model => model.SubjectName)
@@ -53,19 +231,11 @@
                 </th>
                 <th colspan="2" class="text-center">
                     Лекции
-                    @*@Html.DisplayNameFor(model => model.HoursOfLabWork)*@
                 </th>
                 <th colspan="2" class="text-center">
                     Практики
-                    @*@Html.DisplayNameFor(model => model.HoursOfLabWorkAll)*@
-                </th>
-                @*<th>
-                    @Html.DisplayNameFor(model => model.HoursOfPractWork)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
                 </th>*@
-                <th rowspan="2" class="text-center">
+                @*<th rowspan="2" class="text-center">
                     @Html.DisplayNameFor(model => model.KP_KR)
                 </th>
                 <th rowspan="2" class="text-center">
@@ -123,7 +293,7 @@
                     @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
                 </th>
             </tr>
-        </thead>
+        </thead>*@
         <tbody>
             @foreach (var item in Model)
             {
@@ -201,8 +371,8 @@
                         @Html.DisplayFor(modelItem => item.AllHours)
                     </td>
                     <td class="text-center">
-                        @*@Html.DisplayFor(modelItem => item.TeacherName)*@
-                        @Html.DropDownListFor(modelItem => item.TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })
+                        @Html.DisplayFor(modelItem => item.TeacherName)
+                        @*@Html.DropDownListFor(modelItem => item.TeacherId, ViewBag.Teachers as SelectList, new { @class = "form-control" })*@
                         @*@Html.DropDownList("Teachers")*@
                     </td>
                     @*<td>
@@ -211,12 +381,13 @@
                             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
                         </td>*@
                 </tr>
-            }
+                }
 
         </tbody>
     </table>
 </div>
     <hr />
     <p>
-        @Html.ActionLink("Save", "DoneLoad", "Load", new { id = ViewBag.Id }, new { @class = "btn btn-success col-md-2 btn-xs btn-block" })
+        <input type="submit" value="Remove All" class="btn btn-default" />
+        @Html.ActionLink("Save", "DoneLoad", "Load", new { id = ViewBag.Id, model = Model }, new { @class = "btn btn-success col-md-2 btn-xs btn-block" })
     </p>
