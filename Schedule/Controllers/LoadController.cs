@@ -22,7 +22,6 @@ namespace Schedule.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-
             return View(await db.DayLoadRegulars.ToListAsync());
         }
 
@@ -128,6 +127,7 @@ namespace Schedule.Controllers
         [HttpPost]
         public ActionResult CreatedLoad(List<Schedule.Models.DTOs.DayLoadDTO> model)
         {
+            Guid? idLoad = null;
             if (model == null)
             {
                 return HttpNotFound();
@@ -135,16 +135,51 @@ namespace Schedule.Controllers
             foreach (var item in model)
             {
                 RegularStudyDayLoadSubjects load = db.RegularStudyDayLoadSubjects.Where(t => t.Id == item.Id).FirstOrDefault();
+                idLoad = load.LoadId;
                 load.Teacher = db.TeacherModels.Where(t => t.Id == item.TeacherId).FirstOrDefault();
                 db.Entry(load).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            return null;
+            return RedirectToAction("DoneLoad", new { id = idLoad });
         }
 
-        public ActionResult DoneLoad(Guid? IdLoad, List<Schedule.Models.DTOs.DayLoadDTO> model)
+        public ActionResult DoneLoad(Guid? id)
         {
-            return null;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            DayLoadRegular load = db.DayLoadRegulars.Find(id);
+            if (load == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.LoadName = load.LoadName;
+            ViewBag.Id = load.Id;
+            switch (load.LoadKind)
+            {
+                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
+                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
+            }
+
+            List<RegularStudyDayLoadSubjects> list = db.RegularStudyDayLoadSubjects
+                .Include(p => p.Teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            if (list == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<DayLoadDTO> loadsDTO = new List<DayLoadDTO>();
+            foreach (var loadReg in list)
+            {
+                loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
+            }
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            return View(loadsDTO);
         }
 
         public ActionResult CreatedLoadZO()

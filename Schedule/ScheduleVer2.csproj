@@ -388,6 +388,7 @@
     <Content Include="Views\Account\EditConcrete.cshtml" />
     <Content Include="Views\Load\CreatedLoad.cshtml" />
     <Content Include="Views\Load\CreatedLoadZO.cshtml" />
+    <Content Include="Views\Load\DoneLoad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
