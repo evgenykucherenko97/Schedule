@@ -392,6 +392,7 @@
     <Content Include="Views\Load\CreatedLoad.cshtml" />
     <Content Include="Views\Load\CreatedLoadZO.cshtml" />
     <Content Include="Views\Load\DoneLoad.cshtml" />
+    <Content Include="Views\Load\DoneLoadZO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />

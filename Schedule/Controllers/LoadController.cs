@@ -196,7 +196,7 @@ namespace Schedule.Controllers
             {
                 loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
             }
-            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            //ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
             return View(loadsDTO);
         }
 
@@ -235,6 +235,45 @@ namespace Schedule.Controllers
                 loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
             }
             ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            return View(loadsDTO);
+        }
+
+        public ActionResult DoneLoadZO(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ZOLoadRegular load = db.ZOLoadRegulars.Find(id);
+            if (load == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.LoadName = load.LoadName;
+            ViewBag.Id = load.Id;
+            switch (load.LoadKind)
+            {
+                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
+                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
+            }
+
+            List<RegularStudyZOLoadSubjects> list = db.RegularStudyZOLoadSubjects
+                .Include(p => p.Teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            if (list == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<ZOLoadDTO> loadsDTO = new List<ZOLoadDTO>();
+            foreach (var loadReg in list)
+            {
+                loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
+            }
+            //ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
             return View(loadsDTO);
         }
     }
