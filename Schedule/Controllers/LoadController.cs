@@ -73,10 +73,29 @@ namespace Schedule.Controllers
             else if (model.LoadKind == LoadKind.ZO)
             {
                 list = Import_COM.Import_Excel_Zaoch(file_path);
-                 RegularStudyZOLoadSubjects load = LoadConverter.FromDTOtoZORegularLoad(list[0]);
-                //db.ZOLoadDTOs.Add(LoadTypesMapper.ZOLoadDTO(load));
+                RegularStudyZOLoadSubjects load = LoadConverter.FromDTOtoZORegularLoad(list[0]);
+                List<RegularStudyZOLoadSubjects> loads = new List<RegularStudyZOLoadSubjects>();
+                loads.Add(load);
+                foreach (var group in load.Groups)
+                {
+                    db.Groups.Attach(group);
+                }
+                ZOLoadRegular zoLoadRegular = new ZOLoadRegular()
+                {
+                    LoadName = model.Name,
+                    StudentKind = model.StudentKind,
+                    LoadKind = model.LoadKind,
+                    regularStudyZOLoadSubjects = loads
+                };
+
+                for (int i = 0; i < zoLoadRegular.regularStudyZOLoadSubjects.Count; i++)
+                {
+                    zoLoadRegular.regularStudyZOLoadSubjects.ElementAt(i).LoadId = zoLoadRegular.Id;
+                }
+                db.ZOLoadRegulars.Add(zoLoadRegular);
+                await db.SaveChangesAsync();
                 db.SaveChanges();
-                return RedirectToAction("CreatedLoadZO");
+                return RedirectToAction("CreatedLoadZO", new { id = zoLoadRegular.Id });
             }
             else
             {
@@ -99,7 +118,6 @@ namespace Schedule.Controllers
             }
 
             ViewBag.LoadName = load.LoadName;
-            ViewBag.Id = load.Id;
             switch (load.LoadKind)
             {
                 case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
@@ -125,7 +143,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreatedLoad(List<Schedule.Models.DTOs.DayLoadDTO> model)
+        public ActionResult CreatedLoad(List<DayLoadDTO> model)
         {
             Guid? idLoad = null;
             if (model == null)
@@ -182,10 +200,42 @@ namespace Schedule.Controllers
             return View(loadsDTO);
         }
 
-        public ActionResult CreatedLoadZO()
+        public ActionResult CreatedLoadZO(Guid? id)
         {
-            return null;
-           // return View(db.ZOLoadDTOs.ToList());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ZOLoadRegular load = db.ZOLoadRegulars.Find(id);
+            if (load == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ViewBag.LoadName = load.LoadName;
+            switch (load.LoadKind)
+            {
+                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
+                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
+            }
+
+            List<RegularStudyZOLoadSubjects> list = db.RegularStudyZOLoadSubjects
+                .Include(p => p.Teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            if (list == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            List<ZOLoadDTO> loadsDTO = new List<ZOLoadDTO>();
+            foreach (var loadReg in list)
+            {
+                loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
+            }
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            return View(loadsDTO);
         }
     }
 }

@@ -2,10 +2,70 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>Schedule</h1>
     <p class="lead">Some text information......................................................</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>*@
+<hr />
+<div id="carousel" class="carousel slide" data-ride="carousel">
+    <!-- Индикаторы -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active">
+            @*class="carousel-caption"*@
+            @*<div class="jumbotron">
+                <h1>Schedule</h1>
+                <p class="lead">Some text information......................................................</p>
+                <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            </div>*@
+            <img src="~/Content/Images/blue.jpg">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Check Load</h3>
+                <p>...</p>
+                <p><a href="https://asp.net" class="btn btn-warning btn-lg">Learn more &raquo;</a></p>
+            </div>
+        </div>
+        <div class="item">
+            @*<div class="jumbotron">
+                <h1>Schedule</h1>
+                <p class="lead">Some text information......................................................</p>
+                <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            </div>*@
+            <img src="~/Content/Images/blue.jpg">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Download doucuments</h3>
+                <p>...</p>
+                <p><a href="https://asp.net" class="btn btn-warning btn-lg">Learn more &raquo;</a></p>
+            </div>
+        </div>
+        <div class="item">
+            @*<div class="jumbotron">
+                <h1>Schedule</h1>
+                <p class="lead">Some text information......................................................</p>
+                <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+            </div>*@
+            <img src="~/Content/Images/blue.jpg">
+            <div class="carousel-caption d-none d-md-block">
+                <h3>Use everywhere</h3>
+                <p>...</p>
+                <p><a href="https://asp.net" class="btn btn-warning btn-lg">Learn more &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Элементы управления -->
+    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Предыдущий</span>
+    </a>
+    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Следующий</span>
+    </a>
 </div>
 
 <div class="row">

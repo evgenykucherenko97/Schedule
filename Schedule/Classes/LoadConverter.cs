@@ -195,14 +195,10 @@ namespace Schedule.Classes
             ScheduleContext db = new ScheduleContext();
             RegularStudyZOLoadSubjects load = new RegularStudyZOLoadSubjects();
             string[] groupNames = tableDataDTOZaoch.Groups.Split(null);
-            ////////to constructor
-            load.Groups = new List<Group>();
-            load.Id = Guid.NewGuid();
-            /////////////////////////////////////////////
             foreach (string group in groupNames)
             {
-                //load.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
-                load.Groups.Add(db.Groups.Where(p => p.StudentCount == 6).FirstOrDefault());
+                load.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                //load.Groups.Add(db.Groups.Where(p => p.StudentCount == 6).FirstOrDefault());
             }
             load.setStudentCount();
             

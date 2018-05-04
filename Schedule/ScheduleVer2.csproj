@@ -277,6 +277,10 @@
     <Compile Include="Migrations\201805031259506_addLoadIdToRegularStudyLoad.Designer.cs">
       <DependentUpon>201805031259506_addLoadIdToRegularStudyLoad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.cs" />
+    <Compile Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.Designer.cs">
+      <DependentUpon>201805041324495_AddToDBZOSetsAndReferences.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DTOs\DayLoadDTO.cs" />
@@ -314,6 +318,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\Images\blue.jpg" />
     <Content Include="Content\sicky_footer.css" />
     <Content Include="Content\signin.css" />
     <Content Include="favicon.ico" />
@@ -349,8 +354,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
@@ -462,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805031259506_addLoadIdToRegularStudyLoad.resx">
       <DependentUpon>201805031259506_addLoadIdToRegularStudyLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.resx">
+      <DependentUpon>201805041324495_AddToDBZOSetsAndReferences.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

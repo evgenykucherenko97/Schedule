@@ -8,13 +8,17 @@ namespace Schedule.Models.LoadModels
     public class RegularStudyZOLoadSubjects
     {
         public Guid Id { get; set; }
-
-        public ZOLoadRegular Load { get; set; }
-        public Guid? IdLoad { get; set; }
+        
+        public Guid? LoadId { get; set; }
         //subject 
         public Subject Subject { get; set; }
         //groups
-        public List<Group> Groups { get; set; }
+        public virtual ICollection<Group> Groups { get; set; }
+        public RegularStudyZOLoadSubjects()
+        {
+            Id = Guid.NewGuid();
+            Groups = new List<Group>();
+        }
         public int? StudentCount { get; set; }
         public void setStudentCount()
         {

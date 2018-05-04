@@ -16,12 +16,13 @@ namespace Schedule.Models
         public DbSet<FileModel> Files { get; set; }
         public DbSet<Group> Groups { get; set; }
 
-        //public DbSet<DayLoadDTO> DayLoadDTOs { get; set; }
-        //public DbSet<ZOLoadDTO> ZOLoadDTOs { get; set; }
-
         public DbSet<DayLoadRegular> DayLoadRegulars { get; set; }
         public DbSet<RegularStudyDayLoadSubjects> RegularStudyDayLoadSubjects { get; set; }
         public DbSet<RegularStudyDayLoadGEK> RegularStudyDayLoadGEKs { get; set; }
+
+        public DbSet<ZOLoadRegular> ZOLoadRegulars { get; set; }
+        public DbSet<RegularStudyZOLoadSubjects> RegularStudyZOLoadSubjects { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Group>().HasMany(c => c.RegularStudyDayLoadSubjects)
@@ -34,6 +35,11 @@ namespace Schedule.Models
                 .Map(t => t.MapLeftKey("GroupId")
                 .MapRightKey("RegularStudyDayLoadGEKId")
                 .ToTable("GroupRegularStudyDayLoadGEK"));
+            modelBuilder.Entity<Group>().HasMany(c => c.RegularStudyZOLoadSubjects)
+                .WithMany(s => s.Groups)
+                .Map(t => t.MapLeftKey("GroupId")
+                .MapRightKey("RegularStudyZOLoadSubjectsId")
+                .ToTable("GroupRegularStudyZOLoadSubjects"));
         }
 
     }

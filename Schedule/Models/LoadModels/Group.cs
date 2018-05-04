@@ -54,10 +54,12 @@ namespace Schedule.Models.LoadModels
         public GroupClassesKind GroupClassesKind { get; set; }
 
         public virtual ICollection<RegularStudyDayLoadSubjects> RegularStudyDayLoadSubjects { get; set; }
+        public virtual ICollection<RegularStudyZOLoadSubjects> RegularStudyZOLoadSubjects { get; set; }
         public virtual ICollection<RegularStudyDayLoadGEK> RegularStudyDayLoadGEK { get; set; }
         public Group()
         {
             RegularStudyDayLoadSubjects = new List<RegularStudyDayLoadSubjects>();
+            RegularStudyZOLoadSubjects = new List<RegularStudyZOLoadSubjects>();
             RegularStudyDayLoadGEK = new List<RegularStudyDayLoadGEK>();
         }
 
