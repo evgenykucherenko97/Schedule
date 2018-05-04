@@ -238,6 +238,25 @@ namespace Schedule.Controllers
             return View(loadsDTO);
         }
 
+        [HttpPost]
+        public ActionResult CreatedLoadZO(List<ZOLoadDTO> model)
+        {
+            Guid? idLoad = null;
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            foreach (var item in model)
+            {
+                RegularStudyZOLoadSubjects load = db.RegularStudyZOLoadSubjects.Where(t => t.Id == item.Id).FirstOrDefault();
+                idLoad = load.LoadId;
+                load.Teacher = db.TeacherModels.Where(t => t.Id == item.TeacherId).FirstOrDefault();
+                db.Entry(load).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("DoneLoadZO", new { id = idLoad });
+        }
+
         public ActionResult DoneLoadZO(Guid? id)
         {
             if (id == null)
