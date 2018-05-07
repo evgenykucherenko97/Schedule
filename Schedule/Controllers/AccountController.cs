@@ -35,12 +35,14 @@ namespace Schedule.Controllers
         }
 
         //admin
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> GetAll()
         {
             List<UserDTO> users = await UserService.GetAll();
             return View(users);
         }
 
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             UserDTO user = await UserService.GetUser(User.Identity.Name);
@@ -87,6 +89,7 @@ namespace Schedule.Controllers
         }
 
         //admin does
+        [Authorize(Roles = "admin")]
         public ActionResult Register()
         {
             return View();
@@ -95,6 +98,7 @@ namespace Schedule.Controllers
         //admin does
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             await SetInitialDataAsync();
@@ -123,7 +127,7 @@ namespace Schedule.Controllers
         }
 
 
-
+        [Authorize]
         public async Task<ActionResult> Edit()
         {
             UserDTO user = await UserService.GetUser(User.Identity.Name);
@@ -132,6 +136,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> Edit(EditModel model)
         {
             if (ModelState.IsValid)
@@ -171,6 +176,7 @@ namespace Schedule.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete()
         {
             return View();
@@ -178,6 +184,7 @@ namespace Schedule.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
+        [Authorize]
         public async Task<ActionResult> DeleteConfirmed()
         {
             OperationDetails result = await UserService.Delete(User.Identity.Name);
@@ -191,6 +198,7 @@ namespace Schedule.Controllers
 
         //admin does
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteConcrete(string id)
         {
             if (id == null || id == "")
@@ -204,6 +212,7 @@ namespace Schedule.Controllers
         //admin does
         [HttpPost]
         [ActionName("DeleteConcrete")]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteConcreteConfirmed(string id)
         {            
             OperationDetails result = await UserService.DeleteById(id);
@@ -215,6 +224,7 @@ namespace Schedule.Controllers
         }
 
         //admin does
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DetailsConcrete(string id)
         {
             if (id == null || id == "")
@@ -226,6 +236,7 @@ namespace Schedule.Controllers
         }
 
         //admin does
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> EditConcrete(string id)
         {
             UserDTO user = await UserService.GetUserById(id);
@@ -249,6 +260,7 @@ namespace Schedule.Controllers
 
         //admin does
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> EditConcrete(EditModelForAdmin model)
         {
             if (ModelState.IsValid)

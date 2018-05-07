@@ -21,6 +21,7 @@ namespace Schedule.Controllers
         //private ScheduleContext db = new ScheduleContext();
 
         // GET: TeacherModels
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             var teachers = await unitOfWork.Teachers.GetAllAsync();
@@ -37,7 +38,9 @@ namespace Schedule.Controllers
             //return View(await db.TeacherModels.ToListAsync());
         }
 
+
         // GET: TeacherModels/Details/5
+        [Authorize]
         public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -57,6 +60,7 @@ namespace Schedule.Controllers
         }
 
         // GET: TeacherModels/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             //SelectList degrees = new SelectList(db.Degrees, "Id", "Name");
@@ -73,6 +77,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Create(TeacherModel teacherModel)
         {
             if (ModelState.IsValid)
@@ -89,6 +94,7 @@ namespace Schedule.Controllers
         }
 
         // GET: TeacherModels/Edit/5
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -122,6 +128,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name,SecondName,Surname,IdDegree,IdPosition")] TeacherModel teacherModel)
         {
             if (ModelState.IsValid)
@@ -136,6 +143,7 @@ namespace Schedule.Controllers
         }
 
         // GET: TeacherModels/Delete/5
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -154,6 +162,7 @@ namespace Schedule.Controllers
         // POST: TeacherModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             //TeacherModel teacherModel = await db.TeacherModels.FindAsync(id);

@@ -10,7 +10,7 @@
 <hr />
 <style>
     .layer {
-        overflow-x: scroll; /* Добавляем полосу прокрутки */
+        overflow-x: scroll;
     }
 
     th, td {
@@ -50,65 +50,65 @@
                 <th colspan="2" class="text-center">
                     Практики
                 </th>
-        <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.KP_KR)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.Cons)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.ExamHours)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.DivHours)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.GraduatingBaschelorWork)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.DP)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.ProizvPractice)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.PreDiplomPractice)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.Magistr)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.Aspir)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.GEK)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.SelfWork)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.AllHours)
-                    </th>
-                    <th rowspan="2" class="text-center">
-                        @Html.DisplayNameFor(model => model.TeacherName)
-                    </th>
-                </tr>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.KP_KR)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Cons)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.ExamHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.DivHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.GraduatingBaschelorWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.DP)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.ProizvPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.PreDiplomPractice)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Magistr)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.Aspir)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.GEK)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.SelfWork)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.AllHours)
+                </th>
+                <th rowspan="2" class="text-center">
+                    @Html.DisplayNameFor(model => model.TeacherName)
+                </th>
+            </tr>
 
-                <tr>
-                    <th class="text-center">
-                        @Html.DisplayNameFor(model => model.HoursOfLabWork)
-                    </th>
-                    <th class="text-center">
-                        @Html.DisplayNameFor(model => model.HoursOfLabWorkAll)
-                    </th>
-                    <th class="text-center">
-                        @Html.DisplayNameFor(model => model.HoursOfPractWork)
-                    </th>
-                    <th class="text-center">
-                        @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
-                    </th>
-                </tr>
-            </thead>
+            <tr>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfLabWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfLabWorkAll)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfPractWork)
+                </th>
+                <th class="text-center">
+                    @Html.DisplayNameFor(model => model.HoursOfPractWorkAll)
+                </th>
+            </tr>
+        </thead>
         <tbody>
             @foreach (var item in Model)
             {
@@ -201,3 +201,9 @@
         </tbody>
     </table>
 </div>
+@if (HttpContext.Current.User.IsInRole("admin"))
+{
+    <hr />
+    @Html.ActionLink("Edit", "CreatedLoad", new { id = ViewBag.Id }, new { @class = "btn btn-info" })
+    <hr />
+}

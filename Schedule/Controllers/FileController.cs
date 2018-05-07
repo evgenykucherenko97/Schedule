@@ -15,6 +15,7 @@ namespace Schedule.Controllers
         private ScheduleContext db = new ScheduleContext();
         // GET: File
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             return View(await db.Files.ToListAsync());
@@ -22,6 +23,7 @@ namespace Schedule.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Upload(HttpPostedFileBase upload)
         {
             if (upload != null)
@@ -41,7 +43,7 @@ namespace Schedule.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [Authorize]
         public async Task<FileResult> Download(Guid? Id)
         {
             if (Id == null)
@@ -62,6 +64,7 @@ namespace Schedule.Controllers
             return File(file_path, file_type, file_name);
         }
 
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(Guid? Id)
         {
             if (Id == null)

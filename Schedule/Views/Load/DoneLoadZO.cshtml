@@ -10,7 +10,7 @@
 <hr />
 <style>
     .layer {
-        overflow-x: scroll; /* Добавляем полосу прокрутки */
+        overflow-x: scroll;
     }
 
     th, td {
@@ -254,3 +254,9 @@
         </tbody>
     </table>
 </div>
+@if (HttpContext.Current.User.IsInRole("admin"))
+    {
+        <hr />
+            @Html.ActionLink("Edit", "CreatedLoadZO", new { id = ViewBag.Id }, new { @class="btn btn-info" })
+        <hr />
+    }

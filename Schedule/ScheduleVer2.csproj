@@ -290,6 +290,7 @@
     <Compile Include="Models\EditModelForAdmin.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\HelpingModels\LoadHelperModel.cs" />
+    <Compile Include="Models\HelpingModels\LoadsViewModel.cs" />
     <Compile Include="Models\LoadModels\CourseWork.cs" />
     <Compile Include="Models\LoadModels\DayLoadRegular.cs" />
     <Compile Include="Models\LoadModels\FormOfControl.cs" />

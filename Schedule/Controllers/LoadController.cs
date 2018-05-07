@@ -20,12 +20,19 @@ namespace Schedule.Controllers
         private ScheduleContext db = new ScheduleContext();
         // GET: File
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> Index()
         {
-            return View(await db.DayLoadRegulars.ToListAsync());
+            LoadsViewModel model = new LoadsViewModel()
+            {
+                DayLoadRegulars = await db.DayLoadRegulars.ToListAsync(),
+                ZOLoadRegulars = await db.ZOLoadRegulars.ToListAsync()
+            };
+            return View(model);
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> CreateLoad()
         {
             SelectList files = new SelectList(db.Files, "Path", "Path");
@@ -34,6 +41,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> CreateLoad(LoadHelperModel model)
         {
             if (model == null)
@@ -104,6 +112,7 @@ namespace Schedule.Controllers
             }
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult CreatedLoad(Guid? id)
         {
             if (id == null)
@@ -143,6 +152,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult CreatedLoad(List<DayLoadDTO> model)
         {
             Guid? idLoad = null;
@@ -161,6 +171,7 @@ namespace Schedule.Controllers
             return RedirectToAction("DoneLoad", new { id = idLoad });
         }
 
+        [Authorize]
         public ActionResult DoneLoad(Guid? id)
         {
             if (id == null)
@@ -200,6 +211,7 @@ namespace Schedule.Controllers
             return View(loadsDTO);
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult CreatedLoadZO(Guid? id)
         {
             if (id == null)
@@ -239,6 +251,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult CreatedLoadZO(List<ZOLoadDTO> model)
         {
             Guid? idLoad = null;
@@ -257,6 +270,7 @@ namespace Schedule.Controllers
             return RedirectToAction("DoneLoadZO", new { id = idLoad });
         }
 
+        [Authorize]
         public ActionResult DoneLoadZO(Guid? id)
         {
             if (id == null)

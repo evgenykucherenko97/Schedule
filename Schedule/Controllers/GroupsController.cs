@@ -18,11 +18,13 @@ namespace Schedule.Controllers
         private ScheduleContext db = new ScheduleContext();
 
         // GET: Groups
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Groups.ToList());
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost, ActionName("Index")]
         public ActionResult RemoveAll()
         {
@@ -32,6 +34,7 @@ namespace Schedule.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Upload(HttpPostedFileBase upload)
         {
             if (upload != null)
@@ -61,6 +64,7 @@ namespace Schedule.Controllers
 
 
         // GET: Groups/Details/5
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -76,6 +80,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Groups/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -86,6 +91,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Create(Group group)
         {
             if (ModelState.IsValid)
@@ -100,6 +106,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Groups/Edit/5
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -119,6 +126,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit([Bind(Include = "Id,Faculty,Caf,Speciality,Grade,StudentCount,GroupKind,GroupClassesKind")] Group group)
         {
             if (ModelState.IsValid)
@@ -131,6 +139,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Groups/Delete/5
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -148,6 +157,7 @@ namespace Schedule.Controllers
         // POST: Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(Guid id)
         {
             Group group = db.Groups.Find(id);

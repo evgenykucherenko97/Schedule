@@ -16,12 +16,15 @@ namespace Schedule.Controllers
         private ScheduleContext db = new ScheduleContext();
 
         // GET: Degrees
+        [Authorize]
         public async Task<ActionResult> Index()
         {
             return View(await db.Degrees.ToListAsync());
         }
 
+
         // GET: Degrees/Details/5
+        [Authorize]
         public async Task<ActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Degrees/Create
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +51,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Create([Bind(Include = "Id,Name")] Degree degree)
         {
             if (ModelState.IsValid)
@@ -60,6 +65,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Degrees/Edit/5
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -79,6 +85,7 @@ namespace Schedule.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Edit([Bind(Include = "Id,Name")] Degree degree)
         {
             if (ModelState.IsValid)
@@ -91,6 +98,7 @@ namespace Schedule.Controllers
         }
 
         // GET: Degrees/Delete/5
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -108,6 +116,7 @@ namespace Schedule.Controllers
         // POST: Degrees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
         public async Task<ActionResult> DeleteConfirmed(Guid id)
         {
             Degree degree = await db.Degrees.FindAsync(id);
