@@ -89,7 +89,7 @@ namespace Schedule.Controllers
         }
 
         //admin does
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public ActionResult Register()
         {
             return View();
@@ -98,7 +98,7 @@ namespace Schedule.Controllers
         //admin does
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "admin")]
+        //[Authorize(Roles = "admin")]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             await SetInitialDataAsync();

@@ -213,73 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803271835187_InitialCreate.cs" />
-    <Compile Include="Migrations\201803271835187_InitialCreate.Designer.cs">
-      <DependentUpon>201803271835187_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804021510396_MigrateDB.cs" />
-    <Compile Include="Migrations\201804021510396_MigrateDB.Designer.cs">
-      <DependentUpon>201804021510396_MigrateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804031135444_MigrateDB2.cs" />
-    <Compile Include="Migrations\201804031135444_MigrateDB2.Designer.cs">
-      <DependentUpon>201804031135444_MigrateDB2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804171235021_AddGroupMigration.cs" />
-    <Compile Include="Migrations\201804171235021_AddGroupMigration.Designer.cs">
-      <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804191203456_MigrateDB3.cs" />
-    <Compile Include="Migrations\201804191203456_MigrateDB3.Designer.cs">
-      <DependentUpon>201804191203456_MigrateDB3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804261203568_AddDayLoadDTOMigration.cs" />
-    <Compile Include="Migrations\201804261203568_AddDayLoadDTOMigration.Designer.cs">
-      <DependentUpon>201804261203568_AddDayLoadDTOMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804301331423_AddZOLoadDTOMigration.cs" />
-    <Compile Include="Migrations\201804301331423_AddZOLoadDTOMigration.Designer.cs">
-      <DependentUpon>201804301331423_AddZOLoadDTOMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805020858215_AddLoadDayRegularMigration.cs" />
-    <Compile Include="Migrations\201805020858215_AddLoadDayRegularMigration.Designer.cs">
-      <DependentUpon>201805020858215_AddLoadDayRegularMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805020916584_AddDayLoadRegularMigration.cs" />
-    <Compile Include="Migrations\201805020916584_AddDayLoadRegularMigration.Designer.cs">
-      <DependentUpon>201805020916584_AddDayLoadRegularMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021038395_AddColumnLoadIdToDayLoadDTO.cs" />
-    <Compile Include="Migrations\201805021038395_AddColumnLoadIdToDayLoadDTO.Designer.cs">
-      <DependentUpon>201805021038395_AddColumnLoadIdToDayLoadDTO.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021357017_ManyToManyMigration.cs" />
-    <Compile Include="Migrations\201805021357017_ManyToManyMigration.Designer.cs">
-      <DependentUpon>201805021357017_ManyToManyMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021405145_ManyToManyMigration2.cs" />
-    <Compile Include="Migrations\201805021405145_ManyToManyMigration2.Designer.cs">
-      <DependentUpon>201805021405145_ManyToManyMigration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805021454189_ManyTo.cs" />
-    <Compile Include="Migrations\201805021454189_ManyTo.Designer.cs">
-      <DependentUpon>201805021454189_ManyTo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031247360_DeletedDTOTables.cs" />
-    <Compile Include="Migrations\201805031247360_DeletedDTOTables.Designer.cs">
-      <DependentUpon>201805031247360_DeletedDTOTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031252279_ChangedRegularDayLoadModel.cs" />
-    <Compile Include="Migrations\201805031252279_ChangedRegularDayLoadModel.Designer.cs">
-      <DependentUpon>201805031252279_ChangedRegularDayLoadModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805031259506_addLoadIdToRegularStudyLoad.cs" />
-    <Compile Include="Migrations\201805031259506_addLoadIdToRegularStudyLoad.Designer.cs">
-      <DependentUpon>201805031259506_addLoadIdToRegularStudyLoad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.cs" />
-    <Compile Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.Designer.cs">
-      <DependentUpon>201805041324495_AddToDBZOSetsAndReferences.cs</DependentUpon>
+    <Compile Include="Migrations\201805071335190_Migration.cs" />
+    <Compile Include="Migrations\201805071335190_Migration.Designer.cs">
+      <DependentUpon>201805071335190_Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -312,7 +248,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-WebApplication1CheckAut-20180314103126.mdf" />
+    <Content Include="App_Data\aspnet-WebApplication1CheckAut-20180314103126_log.ldf">
+      <DependentUpon>aspnet-WebApplication1CheckAut-20180314103126.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Schedule.mdf" />
+    <Content Include="App_Data\ScheduleContext-20180327144721.mdf" />
+    <Content Include="App_Data\ScheduleContext-20180327144721_log.ldf">
+      <DependentUpon>ScheduleContext-20180327144721.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\Schedule_log.ldf">
       <DependentUpon>Schedule.mdf</DependentUpon>
     </Content>
@@ -394,6 +338,8 @@
     <Content Include="Views\Load\CreatedLoadZO.cshtml" />
     <Content Include="Views\Load\DoneLoad.cshtml" />
     <Content Include="Views\Load\DoneLoadZO.cshtml" />
+    <Content Include="Views\Load\DeleteDay.cshtml" />
+    <Content Include="Views\Load\DeleteZO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
@@ -420,56 +366,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803271835187_InitialCreate.resx">
-      <DependentUpon>201803271835187_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804021510396_MigrateDB.resx">
-      <DependentUpon>201804021510396_MigrateDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804031135444_MigrateDB2.resx">
-      <DependentUpon>201804031135444_MigrateDB2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804171235021_AddGroupMigration.resx">
-      <DependentUpon>201804171235021_AddGroupMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804191203456_MigrateDB3.resx">
-      <DependentUpon>201804191203456_MigrateDB3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804261203568_AddDayLoadDTOMigration.resx">
-      <DependentUpon>201804261203568_AddDayLoadDTOMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804301331423_AddZOLoadDTOMigration.resx">
-      <DependentUpon>201804301331423_AddZOLoadDTOMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805020858215_AddLoadDayRegularMigration.resx">
-      <DependentUpon>201805020858215_AddLoadDayRegularMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805020916584_AddDayLoadRegularMigration.resx">
-      <DependentUpon>201805020916584_AddDayLoadRegularMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021038395_AddColumnLoadIdToDayLoadDTO.resx">
-      <DependentUpon>201805021038395_AddColumnLoadIdToDayLoadDTO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021357017_ManyToManyMigration.resx">
-      <DependentUpon>201805021357017_ManyToManyMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021405145_ManyToManyMigration2.resx">
-      <DependentUpon>201805021405145_ManyToManyMigration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805021454189_ManyTo.resx">
-      <DependentUpon>201805021454189_ManyTo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031247360_DeletedDTOTables.resx">
-      <DependentUpon>201805031247360_DeletedDTOTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031252279_ChangedRegularDayLoadModel.resx">
-      <DependentUpon>201805031252279_ChangedRegularDayLoadModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805031259506_addLoadIdToRegularStudyLoad.resx">
-      <DependentUpon>201805031259506_addLoadIdToRegularStudyLoad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805041324495_AddToDBZOSetsAndReferences.resx">
-      <DependentUpon>201805041324495_AddToDBZOSetsAndReferences.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201805071335190_Migration.resx">
+      <DependentUpon>201805071335190_Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

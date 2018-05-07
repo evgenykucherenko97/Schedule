@@ -18,6 +18,7 @@ namespace Schedule.Controllers
     public class LoadController : Controller
     {
         private ScheduleContext db = new ScheduleContext();
+
         // GET: File
         [HttpGet]
         [Authorize]
@@ -308,6 +309,119 @@ namespace Schedule.Controllers
             }
             //ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
             return View(loadsDTO);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            dynamic load;
+            load = db.DayLoadRegulars.Find(id);
+            if (load != null)
+            {
+                return RedirectToAction("DeleteDay", new { id = load.Id });
+            }
+            else
+            {
+                load = db.ZOLoadRegulars.Find(id);
+                if (load != null)
+                {
+                    return RedirectToAction("DeleteZO", new { id = load.Id });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }            
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteDay(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var load = db.DayLoadRegulars.Find(id);
+            if (load != null)
+            {
+                return View(load);
+            }
+            else
+            {                
+                return HttpNotFound();                
+            }
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteZO(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var load = db.ZOLoadRegulars.Find(id);
+            if (load != null)
+            {
+                return View(load);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost, ActionName("DeleteDay")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteDayConfirmed(Guid id)
+        {
+            //add subject deleting!!!!!
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var load = db.DayLoadRegulars.Find(id);
+            if (load != null)
+            {
+                List<RegularStudyDayLoadSubjects> loads = db.RegularStudyDayLoadSubjects.Where(p => p.LoadId == id).ToList();
+                db.RegularStudyDayLoadSubjects.RemoveRange(loads);
+                db.DayLoadRegulars.Remove(load);                
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost, ActionName("DeleteZO")]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "admin")]
+        public ActionResult DeleteZOConfirmed(Guid id)
+        {
+            //add subject deleting!!!!!
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var load = db.ZOLoadRegulars.Find(id);
+            if (load != null)
+            {
+                List<RegularStudyZOLoadSubjects> loads = db.RegularStudyZOLoadSubjects.Where(p => p.LoadId == id).ToList();
+                db.RegularStudyZOLoadSubjects.RemoveRange(loads);
+                db.ZOLoadRegulars.Remove(load);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

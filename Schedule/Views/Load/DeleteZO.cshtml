@@ -1,0 +1,48 @@
+﻿@model Schedule.Models.LoadModels.ZOLoadRegular
+
+@{
+    ViewBag.Title = "DeleteZO";
+}
+
+<h2>DeleteZO</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ZOLoadRegular</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LoadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoadKind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoadKind)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentKind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentKind)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
