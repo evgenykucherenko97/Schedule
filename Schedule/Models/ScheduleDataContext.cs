@@ -23,6 +23,8 @@ namespace Schedule.Models
         public DbSet<ZOLoadRegular> ZOLoadRegulars { get; set; }
         public DbSet<RegularStudyZOLoadSubjects> RegularStudyZOLoadSubjects { get; set; }
 
+        public DbSet<Subject> Subjects { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Group>().HasMany(c => c.RegularStudyDayLoadSubjects)

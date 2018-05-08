@@ -55,7 +55,7 @@ namespace Schedule.Controllers
             if (model.LoadKind == LoadKind.Day)
             {
                 list = Import_COM.Import_Excel(file_path);
-                List<RegularStudyDayLoadSubjects> loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
+                var loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
                 foreach(var load in loads)
                 {
                     foreach(var group in load.Groups)
@@ -83,7 +83,7 @@ namespace Schedule.Controllers
             {
                 list = Import_COM.Import_Excel_Zaoch(file_path);
                 RegularStudyZOLoadSubjects load = LoadConverter.FromDTOtoZORegularLoad(list[0]);
-                List<RegularStudyZOLoadSubjects> loads = new List<RegularStudyZOLoadSubjects>();
+                var loads = new List<RegularStudyZOLoadSubjects>();
                 loads.Add(load);
                 foreach (var group in load.Groups)
                 {
@@ -379,7 +379,6 @@ namespace Schedule.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult DeleteDayConfirmed(Guid id)
         {
-            //add subject deleting!!!!!
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -387,7 +386,11 @@ namespace Schedule.Controllers
             var load = db.DayLoadRegulars.Find(id);
             if (load != null)
             {
-                List<RegularStudyDayLoadSubjects> loads = db.RegularStudyDayLoadSubjects.Where(p => p.LoadId == id).ToList();
+                List<RegularStudyDayLoadSubjects> loads = db.RegularStudyDayLoadSubjects.Include(r => r.Subject).Where(p => p.LoadId == id).ToList();
+                foreach (var item in loads)
+                {
+                    db.Subjects.Remove(item.Subject);
+                }
                 db.RegularStudyDayLoadSubjects.RemoveRange(loads);
                 db.DayLoadRegulars.Remove(load);                
             }
@@ -404,7 +407,6 @@ namespace Schedule.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult DeleteZOConfirmed(Guid id)
         {
-            //add subject deleting!!!!!
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -412,7 +414,11 @@ namespace Schedule.Controllers
             var load = db.ZOLoadRegulars.Find(id);
             if (load != null)
             {
-                List<RegularStudyZOLoadSubjects> loads = db.RegularStudyZOLoadSubjects.Where(p => p.LoadId == id).ToList();
+                List<RegularStudyZOLoadSubjects> loads = db.RegularStudyZOLoadSubjects.Include(r => r.Subject).Where(p => p.LoadId == id).ToList();
+                foreach (var item in loads)
+                {
+                    db.Subjects.Remove(item.Subject);
+                }
                 db.RegularStudyZOLoadSubjects.RemoveRange(loads);
                 db.ZOLoadRegulars.Remove(load);
             }
