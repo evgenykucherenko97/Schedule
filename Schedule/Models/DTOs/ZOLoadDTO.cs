@@ -33,7 +33,7 @@ namespace Schedule.Models.DTOs
         [Display(Name = "Домашнее задание")]
         public double? DZ { get; set; }
         [Display(Name = "Межсессионная конмультация")]
-        public double BetweenSessionConsult { get; set; }
+        public double? BetweenSessionConsult { get; set; }
 
         //зачетная
         [Display(Name = "Дата")]
@@ -74,7 +74,7 @@ namespace Schedule.Models.DTOs
         [Display(Name = "Npr")]
         public double Npr { get; set; }
         [Display(Name = "Кредитов ECTS")]
-        public double CreditsECTS { get; set; }
+        public double? CreditsECTS { get; set; }
         [Display(Name = "Самостоятельная работа")]
         public double? SelfWorkHours { get; set; }        
     }

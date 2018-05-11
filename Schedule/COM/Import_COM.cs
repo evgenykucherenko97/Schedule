@@ -399,5 +399,90 @@ namespace Schedule.COM
 
         }
 
+
+        public static List<TableDataGEKDTO> Import_Excel_GEKDay(string pathfile)
+        {
+            List<TableDataGEKDTO> list = new List<TableDataGEKDTO>();
+
+
+            Microsoft.Office.Interop.Excel.Application xlApp = new Excel.Application();
+            xlApp.Visible = false;
+
+            Microsoft.Office.Interop.Excel.Workbooks workbooks = xlApp.Workbooks;
+
+            Microsoft.Office.Interop.Excel.Workbook xlBook = workbooks.Open(pathfile,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing, Type.Missing, Type.Missing,
+             Type.Missing, Type.Missing);
+
+            TableInEx(xlBook, list);
+
+            try
+            {
+                xlBook.Saved = true;
+                xlBook.Close();
+                xlApp.Quit();
+            }
+            finally
+            {
+                Release.ReleaseObject(workbooks);
+                Release.ReleaseObject(xlBook);
+                Release.ReleaseObject(xlApp);
+            }
+            return list;
+        }
+
+        static void TableInEx(Excel.Workbook wb, List<TableDataGEKDTO> data)
+        {
+            try
+            {
+                Excel.Worksheet xlSheet = (Excel.Worksheet)wb.Worksheets.get_Item(1);
+                Excel.Range excelcells;
+                int count = 12;
+                for (; ; )
+                {
+                    excelcells = xlSheet.get_Range("A" + count.ToString(), Type.Missing);
+                    String num_r = Convert.ToString(excelcells.Value);
+                    if (num_r == null)
+                    {
+                        break;
+                    }
+                    TableDataGEKDTO temp = new TableDataGEKDTO();
+
+                    temp.Id = Guid.NewGuid();
+
+                    excelcells = xlSheet.get_Range("B" + count.ToString(), Type.Missing);
+                    temp.Name = Convert.ToString(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("C" + count.ToString(), Type.Missing);
+                    temp.Faculty = Convert.ToInt32(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("D" + count.ToString(), Type.Missing);
+                    temp.Speciality = Convert.ToString(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("E" + count.ToString(), Type.Missing);
+                    temp.GroupCount = Convert.ToInt32(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("F" + count.ToString(), Type.Missing);
+                    temp.StudentCount = Convert.ToInt32(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("G" + count.ToString(), Type.Missing);
+                    temp.StudyLoad = Convert.ToDouble(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("H" + count.ToString(), Type.Missing);
+                    temp.Npr = Convert.ToDouble(excelcells.Value);
+
+                    excelcells = xlSheet.get_Range("I" + count.ToString(), Type.Missing);
+                    temp.GEK_Work = (GEK_Work)Convert.ToInt32(excelcells.Value);
+
+                    data.Add(temp);
+                    count++;
+                }
+
+            }
+            catch { }
+
+        }
     }
 }

@@ -75,7 +75,7 @@ namespace Schedule.Models.DTOs
         public double? ProizvPractice { get; set; }
 
         [Display(Name = "ПредДП")]
-        public double? PreDiplomPractice { get; set; }
+        public double? PreDP { get; set; }
 
         [Display(Name = "Магистратура")]
         public double? Magistr { get; set; }

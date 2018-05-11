@@ -50,11 +50,13 @@ namespace Schedule.Controllers
                 return HttpNotFound();
             }
             
-            dynamic list;
+            dynamic list, gek;
             string file_path = Server.MapPath("~/Files/" + model.Filepath);
+            string file_path_GEK = Server.MapPath("~/Files/" + model.Filepath_GEK);
             if (model.LoadKind == LoadKind.Day)
             {
                 list = Import_COM.Import_Excel(file_path);
+                gek = Import_COM.Import_Excel_GEKDay(file_path_GEK);
                 var loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
                 foreach(var load in loads)
                 {

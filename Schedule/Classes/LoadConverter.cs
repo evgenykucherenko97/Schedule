@@ -16,7 +16,7 @@ namespace Schedule.Classes
             using (ScheduleContext db = new ScheduleContext())
             {
                 loads = new List<RegularStudyDayLoadSubjects>();
-                string[] groupNames = tableDataDTODay.Groups.Split(null);                
+                string[] groupNames = tableDataDTODay.Groups.Split(null);
                 RegularStudyDayLoadSubjects temp;
                 //for lector
                 if ((tableDataDTODay.LectionCountPerFirstHalf != null || tableDataDTODay.LectionCountPerSecondHalf != null) &&
@@ -31,7 +31,7 @@ namespace Schedule.Classes
                     };
                     temp.DZ = null;
                     foreach (string group in groupNames)
-                    {          
+                    {
                         temp.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
                     }
                     temp.StudentCount = 0;
@@ -185,7 +185,181 @@ namespace Schedule.Classes
                         loads.Add(temp);
                     }
                 }
-            }           
+            }
+            return loads;
+        }
+
+        public static List<RegularStudyDayLoadGEK> FromDTOtoListOfDayGEK(TableDataGEKDTO tableDataGEKDTO)
+        {
+            List<RegularStudyDayLoadGEK> loads;
+            using (ScheduleContext db = new ScheduleContext())
+            {
+                loads = new List<RegularStudyDayLoadGEK>();
+                switch(tableDataGEKDTO.GEK_Work)
+                {
+                    case GEK_Work.GEK4:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.AdditionalParam; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.GEK4,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality +
+                                        "\n(" + tableDataGEKDTO.AdditionalParam + " человека)",
+                                    },
+                                    Term = 8,
+                                    StudentCount = tableDataGEKDTO.StudentCount,
+                                    GroupCount = tableDataGEKDTO.GroupCount,
+                                    HoursForWork = tableDataGEKDTO.StudentCount * 1.5 / 4,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.GEK5:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.AdditionalParam; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.GEK4,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality +
+                                        "\n(" + tableDataGEKDTO.AdditionalParam + " человека)",
+                                    },
+                                    Term = 8,
+                                    StudentCount = tableDataGEKDTO.StudentCount,
+                                    GroupCount = tableDataGEKDTO.GroupCount,
+                                    HoursForWork = tableDataGEKDTO.StudentCount * 0.5,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.Practice:
+                        {
+
+                            break;
+                        }
+                    case GEK_Work.GradBachWorkRecend:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.StudentCount; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.GradBachWorkRecend,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality                                 
+                                    },
+                                    Term = 8,
+                                    StudentCount = 1,
+                                    GroupCount = 0,
+                                    HoursForWork = 2,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.DPBachMain:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.StudentCount; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.DPBachMain,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality
+                                    },
+                                    Term = 8,
+                                    StudentCount = 1,
+                                    GroupCount = 0,
+                                    HoursForWork = 16,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.DPBachAdditional:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.StudentCount; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.DPBachAdditional,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality
+                                    },
+                                    Term = 8,
+                                    StudentCount = 1,
+                                    GroupCount = 0,
+                                    HoursForWork = 1,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.DPSpecMain:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.StudentCount; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.DPSpecMain,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality
+                                    },
+                                    Term = 10,
+                                    StudentCount = 1,
+                                    GroupCount = 0,
+                                    HoursForWork = 23,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                    case GEK_Work.DPSpecAdditional:
+                        {
+                            for (int i = 0; i < tableDataGEKDTO.StudentCount; i++)
+                            {
+                                loads.Add(new RegularStudyDayLoadGEK()
+                                {
+                                    Id = Guid.NewGuid(),
+                                    GEK_Work = GEK_Work.DPSpecAdditional,
+                                    Subject = new Subject()
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        Name = tableDataGEKDTO.Name + " " + tableDataGEKDTO.Faculty.ToString() + "f" + "\n" + tableDataGEKDTO.Speciality
+                                    },
+                                    Term = 10,
+                                    StudentCount = 1,
+                                    GroupCount = 0,
+                                    HoursForWork = 2,
+                                    Npr = tableDataGEKDTO.Npr
+                                });
+                            }
+                            break;
+                        }
+                }
+            }
             return loads;
         }
 
