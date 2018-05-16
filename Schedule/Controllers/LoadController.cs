@@ -259,11 +259,13 @@ namespace Schedule.Controllers
                 {
                     LoadName = model.Name,
                     StudentKind = model.StudentKind,
-                    regularStudyDayLoadSubjects = loads
+                    regularStudyDayLoadSubjects = loads,
+                    //gekLoadModels = geks
                 };
                 for (int i = 0; i<dayLoadRegular.regularStudyDayLoadSubjects.Count; i++)
                 {
                     dayLoadRegular.regularStudyDayLoadSubjects.ElementAt(i).LoadId = dayLoadRegular.Id;
+                    //dayLoadRegular.gekLoadModels.ElementAt(i).IdLoad = dayLoadRegular.Id;
                 }
 
                 db.DayLoadRegulars.Add(dayLoadRegular);
