@@ -476,6 +476,9 @@ namespace Schedule.COM
                     excelcells = xlSheet.get_Range("I" + count.ToString(), Type.Missing);
                     temp.GEK_Work = (GEK_Work)Convert.ToInt32(excelcells.Value);
 
+                    excelcells = xlSheet.get_Range("J" + count.ToString(), Type.Missing);
+                    temp.AdditionalParam = Convert.ToInt32(excelcells.Value);
+
                     data.Add(temp);
                     count++;
                 }

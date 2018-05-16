@@ -14,6 +14,8 @@ namespace Schedule.Models.LoadModels
         
         public Subject Subject { get; set; }
         //groups
+
+
         public virtual ICollection<Group> Groups { get; set; }
         public RegularStudyDayLoadGEK()
         {

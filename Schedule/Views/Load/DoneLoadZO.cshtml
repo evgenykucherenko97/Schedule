@@ -18,6 +18,18 @@
         margin: 0 auto;
     }
 </style>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Преподаватель: </label>
+        @Html.DropDownList("teacher", ViewBag.Teachers as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+
+<hr />
+
 <div class="table-responsive layer">
     <table class="table table-condensed table-hover table-bordered text-center">
         <thead>
@@ -42,17 +54,17 @@
                     Наставная сессия
                 </th>
                 @*<th>
-                @Html.DisplayNameFor(model => model.DateFirst)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LectionCountFirst)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PracticeLabCountFirst)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PracticeLabCountFirstAll)
-            </th>*@
+                        @Html.DisplayNameFor(model => model.DateFirst)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LectionCountFirst)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PracticeLabCountFirst)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PracticeLabCountFirstAll)
+                    </th>*@
                 <th rowspan="2" class="text-center">
                     @Html.DisplayNameFor(model => model.DZ)
                 </th>
@@ -64,23 +76,23 @@
                     Экзаменационная сессия
                 </th>
                 @*<th>
-                @Html.DisplayNameFor(model => model.DateSecond)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LectionCountSecond)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PracticeCountSecond)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PracticeCountSecondAll)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LabCountSecond)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LabCountSecondAll)
-            </th>*@
+                        @Html.DisplayNameFor(model => model.DateSecond)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LectionCountSecond)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PracticeCountSecond)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PracticeCountSecondAll)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LabCountSecond)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LabCountSecondAll)
+                    </th>*@
                 <th rowspan="2" class="text-center">
                     @Html.DisplayNameFor(model => model.HoursForCourseWork)
                 </th>
@@ -89,11 +101,11 @@
                     Консультация
                 </th>
                 @*<th>
-                @Html.DisplayNameFor(model => model.Cons)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ConsAll)
-            </th>*@
+                        @Html.DisplayNameFor(model => model.Cons)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ConsAll)
+                    </th>*@
                 <th rowspan="2" class="text-center">
                     @Html.DisplayNameFor(model => model.ExamHours)
                 </th>
@@ -162,101 +174,101 @@
         </thead>
         <tbody>
             @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SubjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GroupCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StudentCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Term)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateFirst)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LectionCountFirst)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PracticeLabCountFirst)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PracticeLabCountFirstAll)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DZ)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BetweenSessionConsult)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateSecond)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LectionCountSecond)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PracticeCountSecond)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PracticeCountSecondAll)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LabCountSecond)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LabCountSecondAll)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HoursForCourseWork)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cons)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ConsAll)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ExamHours)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DivHours)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AllHours)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TeacherName)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.PartOfYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Npr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreditsECTS)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SelfWorkHours)
-                </td>
-            </tr>
-        }
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubjectName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Term)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateFirst)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LectionCountFirst)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PracticeLabCountFirst)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PracticeLabCountFirstAll)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DZ)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BetweenSessionConsult)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateSecond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LectionCountSecond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PracticeCountSecond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PracticeCountSecondAll)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LabCountSecond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LabCountSecondAll)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoursForCourseWork)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cons)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ConsAll)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExamHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DivHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AllHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeacherName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PartOfYear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Npr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreditsECTS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SelfWorkHours)
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
 @if (HttpContext.Current.User.IsInRole("admin"))
-    {
-        <hr />
-            @Html.ActionLink("Edit", "CreatedLoadZO", new { id = ViewBag.Id }, new { @class="btn btn-info" })
-        <hr />
-    }
+{
+    <hr />
+    @Html.ActionLink("Edit", "CreatedLoadZO", new { id = ViewBag.Id }, new { @class = "btn btn-info" })
+    <hr />
+}

@@ -31,5 +31,10 @@ namespace Schedule.Models
         [Display(Name = "Должность")]
         public PositionModel Position { get; set; }
         public Guid? IdPosition { get; set; }
+
+        public override string ToString()
+        {
+            return Surname + " " + Name[0] + "." + SecondName[0] + ".";
+        }
     }
 }

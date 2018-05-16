@@ -19,6 +19,17 @@
     }
 </style>
 
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Преподаватель: </label>
+        @Html.DropDownList("teacher", ViewBag.Teachers as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+
+<hr />
+
 <div class="table-responsive layer">
     <table class="table table-condensed table-hover table-bordered text-center">
         <thead>

@@ -18,6 +18,191 @@ namespace Schedule.Controllers
     public class LoadController : Controller
     {
         private ScheduleContext db = new ScheduleContext();
+        public List<RegularStudyDayLoadSubjects> FromDTOtoListOfDayRegularLoads(TableDataDTODay tableDataDTODay)
+        {
+            List<RegularStudyDayLoadSubjects> loads = new List<RegularStudyDayLoadSubjects>();
+            string[] groupNames = tableDataDTODay.Groups.Split(null);
+            RegularStudyDayLoadSubjects temp;
+            //for lector
+            if ((tableDataDTODay.LectionCountPerFirstHalf != null || tableDataDTODay.LectionCountPerSecondHalf != null) &&
+                (tableDataDTODay.LectionCountPerFirstHalf != 0 || tableDataDTODay.LectionCountPerSecondHalf != 0))
+                {
+                    temp = new RegularStudyDayLoadSubjects();
+                    temp.KindOfClasses = KindOfClasses.Lections;
+                    temp.Subject = new Subject()
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = tableDataDTODay.SubjectName
+                    };
+                    temp.DZ = null;
+                    foreach (string group in groupNames)
+                    {
+                        temp.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                    }
+                    temp.StudentCount = 0;
+                    foreach (var group in temp.Groups)
+                    {
+                        temp.StudentCount += (int)group.StudentCount;
+                        temp.Subject.Name += ", " + group.Name;
+                    }
+                    if ((bool)tableDataDTODay.FormControlZach)
+                    {
+                        temp.FormOfControl = FormOfControl.FormControlZach;
+                        temp.HoursForControl = 2;
+                        temp.Cons = null;
+                    }
+                    if ((bool)tableDataDTODay.FormControlDiv)
+                    {
+                        temp.FormOfControl = FormOfControl.FormControlDiv;
+                        temp.HoursForControl = 2;
+                        temp.Cons = null;
+                    }
+                    if ((bool)tableDataDTODay.FormControlExam)
+                    {
+                        temp.FormOfControl = FormOfControl.FormControlExam;
+                        temp.HoursForControl = temp.StudentCount / 3.0303;
+                        temp.Cons = temp.Groups.Count * 2;
+                    }
+                    temp.SelfWorkHours = tableDataDTODay.SelfWorkHours;
+                    temp.Term = tableDataDTODay.Term;
+                    temp.CourseWork = CourseWork.None;
+                    temp.HoursForCourseWork = null;
+                    temp.HoursOfWork = tableDataDTODay.LectionCountPerFirstHalf + tableDataDTODay.LectionCountPerSecondHalf;
+                    temp.HoursOfWorkAll = temp.HoursOfWork;
+                    temp.AllCredits = (double)temp.HoursOfWorkAll + (double)temp.HoursForControl;
+                    if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                    if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
+                    loads.Add(temp);
+                }
+
+            if ((tableDataDTODay.LabCountPerFirstHalf != null || tableDataDTODay.LabCountPerSecondHalf != null) &&
+                (tableDataDTODay.LabCountPerFirstHalf != 0 || tableDataDTODay.LabCountPerSecondHalf != 0))
+                {
+                    bool noLections = loads.Count == 0;
+                    foreach (var group in groupNames)
+                    {
+                        temp = new RegularStudyDayLoadSubjects();
+                        temp.KindOfClasses = KindOfClasses.Labs;
+                        temp.Subject = new Subject()
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = tableDataDTODay.SubjectName
+                        };
+                        temp.DZ = null;
+                        temp.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                        temp.StudentCount = (int)temp.Groups.FirstOrDefault().StudentCount;
+                        temp.DZ = temp.StudentCount / 2.0 * (tableDataDTODay.RK + tableDataDTODay.RGR + tableDataDTODay.RR);
+                        temp.Subject.Name += ", " + temp.Groups.FirstOrDefault().Name;
+                        temp.HoursForControl = null;
+                        if ((bool)tableDataDTODay.FormControlZach)
+                        {
+                            if (noLections) temp.HoursForControl = 2;
+                            temp.FormOfControl = FormOfControl.FormControlZach;
+                        }
+                        if ((bool)tableDataDTODay.FormControlDiv)
+                        {
+                            if (noLections) temp.HoursForControl = 2;
+                            temp.FormOfControl = FormOfControl.FormControlDiv;
+                        }
+                        if ((bool)tableDataDTODay.FormControlExam)
+                        {
+                            temp.FormOfControl = FormOfControl.FormControlExam;
+                        }
+                        
+                        temp.Cons = null;
+                        temp.SelfWorkHours = tableDataDTODay.SelfWorkHours;
+                        temp.Term = tableDataDTODay.Term;
+                        temp.HoursOfWork = tableDataDTODay.LabCountPerFirstHalf + tableDataDTODay.LabCountPerSecondHalf;
+                        temp.HoursOfWorkAll = temp.HoursOfWork;
+                        #region
+                        //course
+                        temp.CourseWork = CourseWork.None;
+                        temp.HoursForCourseWork = null;
+                        if (tableDataDTODay.CourserWork != null && tableDataDTODay.CourserWork != 0)
+                        {
+                            temp.CourseWork = CourseWork.CourseWork;
+                            temp.HoursForCourseWork = temp.StudentCount * 3;
+                        }
+                        else if (tableDataDTODay.CourseProject != null && tableDataDTODay.CourseProject != 0)
+                        {
+                            temp.CourseWork = CourseWork.CourseProject;
+                            temp.HoursForCourseWork = temp.StudentCount * 4;
+                        }
+                        #endregion
+                        
+                        temp.AllCredits = (double)temp.HoursOfWorkAll;
+                        if (temp.HoursForControl != null) temp.AllCredits += (double)temp.HoursForControl;
+                        if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                        if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
+                        if (temp.HoursForCourseWork != null) temp.AllCredits += (double)temp.HoursForCourseWork;
+                        loads.Add(temp);
+                    }
+                }
+
+            if ((tableDataDTODay.PracticeCountPerFirstHalf != null || tableDataDTODay.PracticeCountPerSecondHalf != null) &&
+                (tableDataDTODay.PracticeCountPerFirstHalf != 0 || tableDataDTODay.PracticeCountPerSecondHalf != 0))
+                {
+                    bool noLections = loads.Count == 0;
+                    foreach (var group in groupNames)
+                    {
+                        temp = new RegularStudyDayLoadSubjects();
+                        temp.KindOfClasses = KindOfClasses.Labs;
+                        temp.Subject = new Subject()
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = tableDataDTODay.SubjectName
+                        };
+                        temp.Groups.Add(db.Groups.Where(p => p.Name == group).FirstOrDefault());
+                        temp.StudentCount = (int)temp.Groups.FirstOrDefault().StudentCount;
+                        //if (tableDataDTODay.LabCountPerFirstHalf == null || tableDataDTODay.LabCountPerSecondHalf == null)
+                            temp.DZ = temp.StudentCount / 2.0 * (tableDataDTODay.RK + tableDataDTODay.RGR + tableDataDTODay.RR);
+                        temp.Subject.Name += ", " + temp.Groups.FirstOrDefault().Name;
+                        temp.HoursForControl = null;
+                        if ((bool)tableDataDTODay.FormControlZach)
+                        {
+                            if (noLections) temp.HoursForControl = 2;
+                            temp.FormOfControl = FormOfControl.FormControlZach;
+                        }
+                        if ((bool)tableDataDTODay.FormControlDiv)
+                        {
+                            if (noLections) temp.HoursForControl = 2;
+                            temp.FormOfControl = FormOfControl.FormControlDiv;
+                        }
+                        if ((bool)tableDataDTODay.FormControlExam)
+                        {
+                            temp.FormOfControl = FormOfControl.FormControlExam;
+                        }
+                        temp.Cons = null;
+                        temp.SelfWorkHours = tableDataDTODay.SelfWorkHours;
+                        temp.Term = tableDataDTODay.Term;
+                        temp.HoursOfWork = tableDataDTODay.PracticeCountPerFirstHalf + tableDataDTODay.PracticeCountPerSecondHalf;
+                        temp.HoursOfWorkAll = temp.HoursOfWork;
+
+                        #region
+                        //course
+                        if (tableDataDTODay.CourserWork != null && tableDataDTODay.CourserWork != 0)
+                        {
+                            temp.CourseWork = CourseWork.CourseWork;
+                            temp.HoursForCourseWork = temp.StudentCount * 3;
+                        }
+                        else if (tableDataDTODay.CourseProject != null && tableDataDTODay.CourseProject != 0)
+                        {
+                            temp.CourseWork = CourseWork.CourseProject;
+                            temp.HoursForCourseWork = temp.StudentCount * 4;
+                        }
+                        #endregion
+
+                        temp.AllCredits = (double)temp.HoursOfWorkAll;
+                        if (temp.HoursForControl != null) temp.AllCredits += (double)temp.HoursForControl;
+                        if (temp.DZ != null) temp.AllCredits += (double)temp.DZ;
+                        if (temp.Cons != null) temp.AllCredits += (double)temp.Cons;
+                        if (temp.HoursForCourseWork != null) temp.AllCredits += (double)temp.HoursForCourseWork;
+                        loads.Add(temp);
+                    }
+                }
+            
+            return loads;
+        }
 
         // GET: File
         [HttpGet]
@@ -57,19 +242,23 @@ namespace Schedule.Controllers
             {
                 list = Import_COM.Import_Excel(file_path);
                 gek = Import_COM.Import_Excel_GEKDay(file_path_GEK);
-                var loads = LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
-                foreach(var load in loads)
+                var loads = new List<RegularStudyDayLoadSubjects>();// LoadConverter.FromDTOtoListOfDayRegularLoads(list[2]);
+                var geks = new List<RegularStudyDayLoadGEK>();
+
+                for (int i = 0; i < list.Count; i++)
                 {
-                    foreach(var group in load.Groups)
-                    {
-                        db.Groups.Attach(group);
-                    }
+                    loads.AddRange(FromDTOtoListOfDayRegularLoads(list[i]));
                 }
+
+                for (int i = 0; i < gek.Count; i++)
+                {
+                    geks.AddRange(LoadConverter.FromDTOtoListOfDayGEK(gek[i]));
+                }
+                
                 DayLoadRegular dayLoadRegular = new DayLoadRegular()
                 {
                     LoadName = model.Name,
                     StudentKind = model.StudentKind,
-                    LoadKind = model.LoadKind,
                     regularStudyDayLoadSubjects = loads
                 };
                 for (int i = 0; i<dayLoadRegular.regularStudyDayLoadSubjects.Count; i++)
@@ -95,7 +284,6 @@ namespace Schedule.Controllers
                 {
                     LoadName = model.Name,
                     StudentKind = model.StudentKind,
-                    LoadKind = model.LoadKind,
                     regularStudyZOLoadSubjects = loads
                 };
 
@@ -130,11 +318,7 @@ namespace Schedule.Controllers
             }
 
             ViewBag.LoadName = load.LoadName;
-            switch (load.LoadKind)
-            {
-                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
-                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
-            }
+            ViewBag.LoadKind = "Дневная";
 
             List<RegularStudyDayLoadSubjects> list = db.RegularStudyDayLoadSubjects
                 .Include(p => p.Teacher)
@@ -150,7 +334,7 @@ namespace Schedule.Controllers
             {
                 loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
             }
-            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
             return View(loadsDTO);
         }
 
@@ -175,7 +359,7 @@ namespace Schedule.Controllers
         }
 
         [Authorize]
-        public ActionResult DoneLoad(Guid? id)
+        public ActionResult DoneLoad(Guid? id, Guid? teacher)
         {
             if (id == null)
             {
@@ -190,17 +374,21 @@ namespace Schedule.Controllers
 
             ViewBag.LoadName = load.LoadName;
             ViewBag.Id = load.Id;
-            switch (load.LoadKind)
-            {
-                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
-                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
-            }
+            ViewBag.LoadKind = "Дневная";
 
             List<RegularStudyDayLoadSubjects> list = db.RegularStudyDayLoadSubjects
                 .Include(p => p.Teacher)
                 .Include(r => r.Subject)
                 .Include(k => k.Groups)
                 .Where(e => e.LoadId == id).ToList();
+            if (teacher != null)
+            {
+                list = db.RegularStudyDayLoadSubjects
+                .Include(p => p.Teacher).Where(p => p.Teacher.Id == teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            }
             if (list == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -210,7 +398,7 @@ namespace Schedule.Controllers
             {
                 loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
             }
-            //ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
             return View(loadsDTO);
         }
 
@@ -229,11 +417,7 @@ namespace Schedule.Controllers
             }
 
             ViewBag.LoadName = load.LoadName;
-            switch (load.LoadKind)
-            {
-                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
-                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
-            }
+            ViewBag.LoadKind = "Дневная";
 
             List<RegularStudyZOLoadSubjects> list = db.RegularStudyZOLoadSubjects
                 .Include(p => p.Teacher)
@@ -249,7 +433,7 @@ namespace Schedule.Controllers
             {
                 loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
             }
-            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
             return View(loadsDTO);
         }
 
@@ -274,7 +458,7 @@ namespace Schedule.Controllers
         }
 
         [Authorize]
-        public ActionResult DoneLoadZO(Guid? id)
+        public ActionResult DoneLoadZO(Guid? id, Guid? teacher)
         {
             if (id == null)
             {
@@ -289,17 +473,21 @@ namespace Schedule.Controllers
 
             ViewBag.LoadName = load.LoadName;
             ViewBag.Id = load.Id;
-            switch (load.LoadKind)
-            {
-                case LoadKind.Day: ViewBag.LoadKind = "Дневная"; break;
-                case LoadKind.ZO: ViewBag.LoadKind = "Заочная"; break;
-            }
+            ViewBag.LoadKind = "Заочная"; 
 
             List<RegularStudyZOLoadSubjects> list = db.RegularStudyZOLoadSubjects
                 .Include(p => p.Teacher)
                 .Include(r => r.Subject)
                 .Include(k => k.Groups)
                 .Where(e => e.LoadId == id).ToList();
+            if (teacher != null)
+            {
+                list = db.RegularStudyZOLoadSubjects
+                .Include(p => p.Teacher).Where(p => p.Teacher.Id == teacher)
+                .Include(r => r.Subject)
+                .Include(k => k.Groups)
+                .Where(e => e.LoadId == id).ToList();
+            }
             if (list == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -309,7 +497,7 @@ namespace Schedule.Controllers
             {
                 loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
             }
-            //ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Name");
+            ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
             return View(loadsDTO);
         }
 

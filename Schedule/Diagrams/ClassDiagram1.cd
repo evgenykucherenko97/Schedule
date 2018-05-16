@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Schedule.App_Start.AutoMapperConfig" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\AutoMapperConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.App_Start.Startup" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgAAQAAA=</HashCode>
+      <FileName>App_Start\Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.BundleConfig" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.FilterConfig" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.RouteConfig" Collapsed="true">
+    <Position X="2.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.MvcApplication" Collapsed="true">
+    <Position X="2.25" Y="4" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Classes.LoadConverter" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAIAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Classes\LoadConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Classes.LoadTypesMapper" Collapsed="true">
+    <Position X="10.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\LoadTypesMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Classes.TableDataDTODay" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQKMQkIAEIQQDIQAAAQBAIAAQAgAEAABMAAIICECEgA=</HashCode>
+      <FileName>Classes\TableDataDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Classes.TableDataDTOZaoch" Collapsed="true">
+    <Position X="8.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQCIBMIAQEQICIAAAAQBCIAAQAgAEAEBuCAAICECEgI=</HashCode>
+      <FileName>Classes\TableDataDTOZaoch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Classes.TableDataGEKDTO" Collapsed="true">
+    <Position X="7" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAGACAAAAAAAIAAAAQBAAQAAAAAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Classes\TableDataGEKDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.COM.Release" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>COM\Import_COM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.COM.Import_COM" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAgACAAAAAAAAAAAAAEAAAAAI=</HashCode>
+      <FileName>COM\Import_COM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.AccountController" Collapsed="true">
+    <Position X="14.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEACAAAIAgAIAgAEBAAICAgEQAAAFAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.DegreesController" Collapsed="true">
+    <Position X="11.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\DegreesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.FileController" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAgAAAEAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FileController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.GroupsController" Collapsed="true">
+    <Position X="13.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAgAAAEAAEACIAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\GroupsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.HomeController" Collapsed="true">
+    <Position X="11.25" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.LoadController" Collapsed="true">
+    <Position X="13" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACKQAAwAAAAAAAAAAAAAAEAABAAkAEAAAAQAAA=</HashCode>
+      <FileName>Controllers\LoadController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.PositionModelsController" Collapsed="true">
+    <Position X="13.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\PositionModelsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Controllers.TeacherModelsController" Collapsed="true">
+    <Position X="11.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABAACAAAAAAACAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TeacherModelsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.EF.Repositories.DegreeRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Repositories\DegreeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.EF.Repositories.FileRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Repositories\FileRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.EF.Repositories.GroupRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Repositories\GroupRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.EF.Repositories.PositionRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Repositories\PositionRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.EF.Repositories.TeacherRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAQAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Repositories\TeacherRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.EF.UnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIIAAMAAACAQAAAgAAAAAAAAQIAAAAACAAAAAgiAAIA=</HashCode>
+      <FileName>EF\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.Migrations.Migration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201805071335190_Migration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.Migrations.addedSubjectDbSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201805080908226_addedSubjectDbSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.Migrations.Migration2" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201805111430057_Migration2.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Schedule.Migrations.Configuration" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.Degree" Collapsed="true">
+    <Position X="14.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Degree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.EditModel" Collapsed="true">
+    <Position X="13" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\EditModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.EditModelForAdmin" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAEAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\EditModelForAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.FileModel" Collapsed="true">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAIAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\FileModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoginModel" Collapsed="true">
+    <Position X="14.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoginModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.PositionModel" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\PositionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.RegisterModel" Collapsed="true">
+    <Position X="13" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAEAAAAAQAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\RegisterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.ScheduleContext" Collapsed="true">
+    <Position X="16.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAkAAAAABAgAgAAAgAAAAEAAgAAACQAAAAAAAAIA=</HashCode>
+      <FileName>Models\ScheduleDataContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.TeacherModel" Collapsed="true">
+    <Position X="13" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAgAAAAAAAAgAQAAAAQQBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TeacherModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.UserDisplayModel" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\UserDisplayMosel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.DTOs.DayLoadDTO" Collapsed="true">
+    <Position X="8.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgACQAAAAAgEAAAAEAEBDLAEAAAAQAAgkQgEECEAUAA=</HashCode>
+      <FileName>Models\DTOs\DayLoadDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.DTOs.TeacherDTO" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAAAAAAAgAAAAAAQQBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DTOs\TeacherDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.DTOs.ZOLoadDTO" Collapsed="true">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgiAAAAARgACAEAEAABCJAAEAAgAAEAkKgAACEAEAo=</HashCode>
+      <FileName>Models\DTOs\ZOLoadDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.HelpingModels.LoadHelperModel" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAQAAAAQAEAAAAQAAAAAAAA=</HashCode>
+      <FileName>Models\HelpingModels\LoadHelperModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.HelpingModels.LoadsViewModel" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Models\HelpingModels\LoadsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.DayLoadRegular" Collapsed="true">
+    <Position X="2.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAGAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\LoadModels\DayLoadRegular.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.RegularStudyDayLoadGEK" Collapsed="true">
+    <Position X="8.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAECAGAAAAAABAAAAIABIAAAAAAQAAAAEAAAAAAAEAA=</HashCode>
+      <FileName>Models\LoadModels\GEKLoadModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.Group" Collapsed="true">
+    <Position X="13" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAQBAKAAAAAhAAQAAAAAAAAAEAAAAIECAAA=</HashCode>
+      <FileName>Models\LoadModels\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.RegularStudyDayLoadSubjects" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAEAAAQAADBAAAIABAJAAAAAAAAAAESAAkAAEABA=</HashCode>
+      <FileName>Models\LoadModels\RegularStudyDayLoadSubjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.RegularStudyZOLoadSubjects" Collapsed="true">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkiAEAAARAACJEAAIABCJAQEAAgAAEAkKAAkAAEEAo=</HashCode>
+      <FileName>Models\LoadModels\RegularStudyZOLoadSubjects.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.Subject" Collapsed="true">
+    <Position X="13" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoadModels\Subject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Schedule.Models.LoadModels.ZOLoadRegular" Collapsed="true">
+    <Position X="4.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCACAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\LoadModels\ZOLoadRegular.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Schedule.EF.Interfaces.IRepository&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAAAAAAABAAAAAAAAAAAEAAEAAAgAAIAAAAAA=</HashCode>
+      <FileName>EF\Interfaces\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Schedule.Classes.GEK_Work" Collapsed="true">
+    <Position X="6" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAQDAAAAkAAIAAAoAAAAAAAABAAA=</HashCode>
+      <FileName>Classes\TableDataGEKDTO.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.Roles" Collapsed="true">
+    <Position X="14.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Roles.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.HelpingModels.LoadKind" Collapsed="true">
+    <Position X="13" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\HelpingModels\LoadHelperModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.HelpingModels.StudentKind" Collapsed="true">
+    <Position X="2.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAABAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HelpingModels\LoadHelperModel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.LoadModels.CourseWork" Collapsed="true">
+    <Position X="2.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAA=</HashCode>
+      <FileName>Models\LoadModels\CourseWork.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.LoadModels.FormOfControl" Collapsed="true">
+    <Position X="4.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAIAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LoadModels\FormOfControl.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.LoadModels.GroupKind" Collapsed="true">
+    <Position X="9.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAABAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\LoadModels\GroupKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.LoadModels.GroupClassesKind" Collapsed="true">
+    <Position X="7.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Models\LoadModels\GroupKind.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Schedule.Models.LoadModels.KindOfClasses" Collapsed="true">
+    <Position X="11.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAEAgAAAAAAA=</HashCode>
+      <FileName>Models\LoadModels\KindOfClasses.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

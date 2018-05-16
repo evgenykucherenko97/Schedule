@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Schedule.COM;
 using Schedule.Models;
 using Schedule.Models.LoadModels;
@@ -17,11 +18,14 @@ namespace Schedule.Controllers
     {
         private ScheduleContext db = new ScheduleContext();
 
-        // GET: Groups
+        
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Groups.ToList());
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            var groups = db.Groups.ToList();
+            return View(groups.ToPagedList(pageNumber, pageSize));
         }
 
         [Authorize(Roles = "admin")]

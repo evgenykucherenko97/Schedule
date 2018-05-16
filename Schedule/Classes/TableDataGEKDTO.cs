@@ -22,7 +22,7 @@ namespace Schedule.Classes
     {
         public Guid Id { get; set; }
         public GEK_Work GEK_Work { get; set; }
-        public int AdditionalParam { get; set; }
+        public int? AdditionalParam { get; set; }
         public string Name { get; set; }
         public int StudentCount { get; set; }
         public int GroupCount { get; set; }
