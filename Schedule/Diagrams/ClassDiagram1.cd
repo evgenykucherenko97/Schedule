@@ -92,56 +92,56 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.AccountController" Collapsed="true">
-    <Position X="14.75" Y="7.5" Width="1.5" />
+    <Position X="19" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEACAAAIAgAIAgAEBAAICAgEQAAAFAAA=</HashCode>
       <FileName>Controllers\AccountController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.DegreesController" Collapsed="true">
-    <Position X="11.5" Y="7.5" Width="1.5" />
+    <Position X="15" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\DegreesController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.FileController" Collapsed="true">
-    <Position X="14.75" Y="6.75" Width="1.5" />
+    <Position X="19" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAgAAAEAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\FileController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.GroupsController" Collapsed="true">
-    <Position X="13.25" Y="6" Width="1.5" />
+    <Position X="19" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACARAACAAAAAAAgAAAEAAEACIAEAAAAAAAA=</HashCode>
       <FileName>Controllers\GroupsController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.HomeController" Collapsed="true">
-    <Position X="11.25" Y="6" Width="1.75" />
+    <Position X="17" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\HomeController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.LoadController" Collapsed="true">
-    <Position X="13" Y="7.5" Width="1.5" />
+    <Position X="17" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAACKQAAwAAAAAAAAAAAAAAEAABAAkAEAAAAQAAA=</HashCode>
+      <HashCode>AAAAAACKRAAwAAAAAAAAAAAAAAEAABAAkAEAAAAQAAA=</HashCode>
       <FileName>Controllers\LoadController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.PositionModelsController" Collapsed="true">
-    <Position X="13.25" Y="6.75" Width="1.5" />
+    <Position X="17" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\PositionModelsController.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Controllers.TeacherModelsController" Collapsed="true">
-    <Position X="11.5" Y="6.75" Width="1.5" />
+    <Position X="15" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACABAACAAAAAAACAAAEAAEACAAEAAAAAAAA=</HashCode>
       <FileName>Controllers\TeacherModelsController.cs</FileName>
@@ -276,7 +276,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Schedule.Models.ScheduleContext" Collapsed="true">
-    <Position X="16.25" Y="6" Width="1.5" />
+    <Position X="17.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAkAAAAABAgAgAAAgAAAAEAAgAAACQAAAAAAAAIA=</HashCode>
       <FileName>Models\ScheduleDataContext.cs</FileName>
@@ -285,7 +285,7 @@
   <Class Name="Schedule.Models.TeacherModel" Collapsed="true">
     <Position X="13" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACCAgAAAAAAAAgAQAAAAQQBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACCAgAAAAAAAAkAQAAAAQQBAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\TeacherModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -334,7 +334,7 @@
   <Class Name="Schedule.Models.LoadModels.DayLoadRegular" Collapsed="true">
     <Position X="2.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACCAGAAAAAAAAAAQAAAAAAAAAQAAAAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAACCAGAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\LoadModels\DayLoadRegular.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -376,7 +376,7 @@
   <Class Name="Schedule.Models.LoadModels.ZOLoadRegular" Collapsed="true">
     <Position X="4.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACCACAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>AAACCACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABA=</HashCode>
       <FileName>Models\LoadModels\ZOLoadRegular.cs</FileName>
     </TypeIdentifier>
   </Class>

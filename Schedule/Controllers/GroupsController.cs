@@ -25,7 +25,7 @@ namespace Schedule.Controllers
             int pageSize = 12;
             int pageNumber = (page ?? 1);
             var groups = db.Groups.ToList();
-            return View(groups.ToPagedList(pageNumber, pageSize));
+            return View(groups.OrderBy(p => p.Caf).ToPagedList(pageNumber, pageSize));
         }
 
         [Authorize(Roles = "admin")]
