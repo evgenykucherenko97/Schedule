@@ -337,7 +337,7 @@ namespace Schedule.Controllers
                 loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
             }
             ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
-            return View(loadsDTO);
+            return View(loadsDTO.OrderBy(e => e.SubjectName).ToList());
         }
 
         [HttpPost]
@@ -401,7 +401,7 @@ namespace Schedule.Controllers
                 loadsDTO.Add(LoadTypesMapper.DayLoadDTO(loadReg));
             }
             ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
-            return View(loadsDTO);
+            return View(loadsDTO.OrderBy(e => e.SubjectName).ToList());
         }
 
         [Authorize(Roles = "admin")]
@@ -436,7 +436,7 @@ namespace Schedule.Controllers
                 loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
             }
             ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
-            return View(loadsDTO);
+            return View(loadsDTO.OrderBy(e => e.SubjectName).ToList());
         }
 
         [HttpPost]
@@ -500,7 +500,7 @@ namespace Schedule.Controllers
                 loadsDTO.Add(LoadTypesMapper.ZOLoadDTO(loadReg));
             }
             ViewBag.Teachers = new SelectList(db.TeacherModels, "Id", "Surname");
-            return View(loadsDTO);
+            return View(loadsDTO.OrderBy(e => e.SubjectName).ToList());
         }
 
         [Authorize(Roles = "admin")]
